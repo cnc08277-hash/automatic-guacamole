@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>’26년 연말 인사평가 안내</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+body{font-family:'Pretendard','Noto Sans KR','Malgun Gothic',-apple-system,BlinkMacSystemFont,sans-serif}
+.custom-scroll::-webkit-scrollbar{width:6px;height:6px}.custom-scroll::-webkit-scrollbar-track{background:#f1f5f9}.custom-scroll::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@page{size:A4 landscape;margin:10mm}
+@media print{
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#fff!important;font-size:11px}
+header,.sticky{position:static!important}
+nav,#adminModeBanner,button,label,input,select{display:none!important}
+.max-h-96,.overflow-y-auto,.overflow-x-auto{max-height:none!important;overflow:visible!important}
+.shadow-sm,.shadow-md,.shadow-lg,.shadow-xl{box-shadow:none!important}
+table{width:100%!important;border-collapse:collapse}
+thead{display:table-header-group}
+tr,.break-inside-avoid{break-inside:avoid}
+th,td{padding:3px 5px!important;font-size:10px!important}
+#rosterSection{break-before:page}
+#rosterSection th,#rosterSection td{white-space:nowrap}
+#page2,#page3{break-before:page}
+}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- 글로벌 상단 고정 헤더 -->
+  <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- CI 로고 및 타이틀 -->
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-2xl bg-white p-1.5 shadow-md flex items-center justify-center shrink-0">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAABQnUlEQVR42u2deXycV3X3v+c+z8xI3iVZlu0szuLYiZNmM1lISJ0SAk4cOw4gKG0hLG0KKUvZChSKcKEt0LKV5S15CyWsfREhju0EZwObsCQhjgNJlM1xYuLYsWRJli1Lmpnn3vP+ce8skuVdkiV77odBzkgaPc9zz7n3nN895/cTKuNwh/gvTeFrS/jaKqUfudzBMnfwn9toSp8zTUvfmhf+vazwnlam4bAmrzIOziCnGWbvEjb0Wlhr92+AN6SobWvASYRRi7p9PHcrECnj07vZ3NxxQNc1e2GaDRMVNipM0OBwWnGMigMMjbHPA1qac4P/aFPM1IdOxkWzMKYKZ09CGIdjJiaaANYAU1CZBGpA3AE9dyELtIJJUBf+LR0ovcRuM7it5MxOZm/ZzLp1+T0/oDFi9q6YDSc66HR+1zjoXajiAMfOaDL+6xqzl5BFmPqa6Zh0PXk9DsNUnMxApBbRk0BORLUakVko4zDpDJICXFiIDyECwoSvFlwO0B0ovcBm0JfA7ATdjOFZVNowrg0bdZCktrFzsN2jMfJOXdkhKg7Q//73NISGK8djzSQ0NRkX1RIxD7VngczGcT5RPAOJ/a9qMHItGrqCJigWxP8N0YN/1ireSEUNEIMYf8ni/wlA5N9K+rox8jTwHE6eILaPoGYjedsFcQddt+04qPuvOMCxuAM8n6ZhS0Q+dSJErwHOB3MBwulIVDJ0/7J7Pkcpf6ZD/WzLjFS1//ui3hMQ/7/gJJrkUHkQ1XsRfg3xE2TyHWytzkKzrcz5MekATcYjNc2uZFSN1dT1vgrMBaBXAGehkkY0BRLt+Zh0DE2pKpBDJQHdicr9qN5CLrmXnjte2jMEPLZCIzmGjD72KElIGBuuHI+tvhy4DMcrED0RmARmMhINFtKUP67R+twG7BLitwMp5BOA5i1KKyLtODYgrEGyq2m/86myXCEdnlVytDvD0ewABuZHzDtF+iE4tUsuQuRy0Pmgp6NyMiY1wX/TFSKbBLQQbMsYf07Bk8X5ezKR39QMOAvYF1F5CtXnwP2cdOoett3aWkhC4G9jjyKV75gVBxjlq/0aA2uTktEvnIRmXg5yNsZdCVyOyaRQGwze5f2jUBOyy6N4YVAXnMEBERJFSMr7iMs9h+FukN+BrGf78vUl+Gqw0LHiAKMb0am59gTEHQfmlaB/S1R1IpqAJg408cZeNPpjcRQgrGDUJl1Etlz+Fxj9ITnzCCIbBqBIcrQ4wdG5A9SvGYed9HKQGxEWI1Hkjb4QyI/5sGa4HYJiqKT5NpD/Im9upqbzRTat7Tuabjg6OkKeuTGsczA/Re3uJVD9BeCDCGd5FEeDs4upGP/+FkQxpfMGBWQ86Msx+iaSzAlUz9lI79Pb/XOfZqClsgMcmbEg9l9DrD950eXE5m/BvAL0eCQu7O56DCT8w7Ub4FGkkBZp0o2aFxH9GU6+SOdtL/gfXZiBi/JjsdRiDBpFYwQbTRHOrLvmAjBvRswlqDsfSQmaLyA5x3J8P0xhUQpcLgv8HLibWH9I68ptJUdYnRtL+YGMLWe9IYabAo6/+GQSFgJLkdSrkQhcNgmQX1xZ8YcNQcqDZDApsLkehB+ispoofSdtzd2lRWpsnDTLGHJUv6rULZmI5TwifSti3gYG1OaD4acqhj9SjkACkg47wg5UPkesP6Ft5/NlEPSoR4vGUhIc0XDlOFx8I4avQnSJP8lx+BVfoorxj9h6JBSPy61DJI2JXo1zl1BV/QIN01+ga1NSQYGGJN4PKEPtwovQqu9B9JfABIr1wlIx+iO6M4vx86AgZibo1eSqZjJu7n30PpXrN4eVEOhAR6F2pzlH7cJJSOoDKG9Cojl+U60gO6MzLDImlFj0YvRRnP0cHXf8tCxBzlYcYL9jfqqI8ExdOh/r3o3RpUh6CpoALglJbmWMQi/wjhBFmAhc/glUfkTsbvJI0eiDS2V0OWOj8ehBY5q63GtQbkRkYeioyuObQiqr/uj3AwuSIKkMLt+H6PdRvkXHyvtLoe3oQIlkFDmiD2vqr55OEl2HyIcx8cloPkexG6oyxpgj5EFifzaTPEDevoed89eV7QBHHCUaJQ6gAqLMvKKO7Pj/AN4CxoDNB2izMsZ2WJQgcQq1OxF5E9vT98DeSAZGdowCFOiGFCyx1L32dJLUzQiL8QEkAWqrjLE9pDSPJoO6hVQnQvq0x8g+k/Xzv84diw4gPin6fzkmLb0Qcf+F4TK/8ldQniO4Whebng/sdcA5mYIKJhqHROdjXJpJF97P7v/p88DHVncMOUCTgbXAhoTaJdchfAZjLvarvnNHf1PKETPs0AyDDae51vcKYwHr2SeMKbZS7veFoGTLfj/0FoiWGveLRAFhPjVBovHAPJLeUxh3+jZ61/zRFzduYqRzAjkyxh+SoKmL3wTRJyCah+bylRqeoVzBJRhSoUTEDLDF8rYIKYbquCQXDHg/8yAOiIkycSmXHbCBaGFBw/X/o5qHOO0/J7kDYz5O222P0A8JPDodwPiHoULd0mtR/QYmnoHme0GqK/Z7KAZfNPLCyjyg5UG8Yav2IeRQsohmUelDyKLai0ihtmcL6NawokclJxoUtEhQzSCcB0QoMaJVINWojkfIANVInC5NeznJALmw06dAV0P270NjfuHi3dHmAGGZaDJMXX8Vqt9HoiloYn3SWxmHP30FviJJUBJQh4hD+QPwFEIbqlvAvYikN6NspePWzUNzLfNTTD7+OFJ6IlZPx3AcKqeAXIyRBpw1iKS9wReu26l3DhXgLsS8h+3Lnx7JcwIZuZlqEljmqFt8LfAdiKaMkJMfTaFN2aof+IqKJFgWlHWIPg78AZXfo/YlXLyZqp48qSmOzbsctDm4xg7jaazAggimGRoyKZKdBpNpwGYvQbgAuALkDN+OXWDgKLCO6T24+EN03voYzEtDS+5ocACBxhQ053zMbz4PcnzosdBKzL9Xg/exs4pDSBXrbCQKsbrdiPAIqo8g/AFxm4GdaHY3pmZnqTb/QBenwlh2kElo4Xf3R6jVmGb6rsnk07Wom4WaczBch8QvL/Kfqvah7m6IPkPH8gehKYZlyRh3gMY0NOeoWXoVRr+Miefg8glQqefZq8FrCiLjq7wNuF6HynpEn8HxFCIbgS3AFrTnRTrv6dr7/M6PPWV6QV9gWLUFyrQSynUSBiEbrm+cgO07C2PORLkI1cWYzHTPSJH7HiltYtvK5wJoMmxsdcPsAAHxqbnm5RjzZSR1IZrPApmKzZcTVhEhRnzeGcIZl2xBaAFeQNmA0fVI/DRty58dZJEJVOgTFVqdN/bmcrx+FCQrTeL5mqYZf41lvE0N100jlyxF5DK/I7hTwX4Xzb+HjtU7A3gyLPciw3fD4WInLT2VlP0eEr8cTSqVnKVJFA9NmhD+2l0gbaA7EPMsxt0H0R17GvxAYx+TVOfBIbZG0CnFsoiGK8eTZF6LmneCzkbkW8ST/oVt39/dDz4f/Q4QsvhZ106hm2+DLqbQNHHMF7X14+9KwkHSc8CdqFtO566HoJx7pzEqhS5HrSRSmSDJ2gQurqau/uMgfw3yYdqzP/a9BEPvBMPgAAtiWGuZubSWrP0n4F0QpcG6Y9T4yw+nDBgJB6UbUVYDt2InrKOrowdW5xlaaGyAfhnsqWE2TQ+B7rAspCl8RtFJGZJwZfbCDNvTF2H0M6j5LJ233cEw6BkMsQMEBZKGdIZc5s1I9B+IjD/2anvUgVhUFZEYSRkkAtu7EZEVoGvQ6GlS0l4ioh1oXAe12pcZ5FyBTvEaZhOTA8LTJy+qoWrcFMTu2/kkUqyNEe0e5Lr3NOBDC9P6l0hPWXw2Es8E97jnIRraXWCIDTJ0c01dsgjlK2BOPYaMXynW2ASOTTFgs33AalR+jbjfY+LH2H7r1j13zQNeifsb+7xOoWVeslejqFsyEdzpRDKFfFSD6ExgHLgTIRLEZVCtRaTqwAxUTQjbdoDsRrQP9AXUtKLaCrxAXLVpTxh2QewTYOyB3WfZYdjEpXUYtYGfdEh7CIbQKMMF1y86B2u+QJS+Apc7Fur5A4QpggTo0vb1Ao+DPIO4h3G6ms7bHxsQ10cBDXH7CXukBCu2yl5VKb2hH4eYaTjqvIYZMxCpA3c6XqivBpgBjCOqMsUShYOOWMpriCzYXBbRVhTvAMImkCdBXsLwPE6fpX3Frj1j/v06QukMaZgzsqEZtQsnoakvY6K3hWaWo7m4rXAiG6gDFVQ7gS3g7kKi29i+/Jeln7sh5RGPA1oBy2L3wVb2xjQNO6bgxk/EuRqUk0FPQ/RcMHNQnU2UHu9xh8LG1K+K2aGSp3AQedj6ZZLqL8QRDuySnl0Y+Q1Wf4nRhxCzCdiypzPsL9QbvrMAGaLP8A9y6jV/jzMfxpgG1OrR3dAipXhfNYvwLMoP6ZWb6V2xpT+Cc7ic+vNTHH9KTM+uFKSPB/syJLoAuBA4G4mq+ldiltMZll9sv9p9GfrFoLxco6BbVrZAWG3BuJtRWUXGPc/WVb2M8ZbIgvEbahdfCHwHk54bSpuPxtCnEO54NAeX9eJz+t/kzc/oyvYeIvVHWZgzQM+35tUnYNJXo9ErEJ0PHIdqCpEISI9+/TIZeG19QC9wD0a/QtvKX5eF0CMuvnGYDhDi/oYrx5NUrUaiV6Cqofxbjh6jx6JYRDKBCrAP9NtE0Y8wupltO17qj93vd1sPMXBNgBFv6i90PXnxK4m4FHglEtWjtg6h1pcWC3s2bjFQfFtG2fOjf7gooPkcYjbj7APY5N/pWr1+JGL+IXSAgFw0ZKrId70dkf8MggpHS3lzIXgWJI58cpvdinALKmsg+wAdqzf3fx77g/uajD/9XEeR+whg/OIG0pznqyWjM8HOBjkZk671pRFJWXNJQetrTAp9FHZQT2BsUp7mSe2vELOS9uxX/A46cvxBh/HwCpDndeej7iegJ1BqsZSxb/hESOTvw9lnQO8H1pJkb2XnXR3FZJQahRn7Ki820BieRxkmf3xjLdnc6ag7C8cFwHmImY+pCgZvARtWwqKU09Ek7uFQTRBJIWnB5fow5mto73+XKVYeKOR5yNDoIT7MBTGsTTi+sZaevk9j4huDiPQYL29W9Se1kY8qnG1F5REM36V9xQ9Kq/gDKdjvIdMgk9JYTX1+JtadjJg/RezVEM3364YFtR6dEaLQdXUMNAqpAglgMFURLvtjNLeMjt6n+xXMjaodYPbCDBsuylP/+zfj+A4cLV1d4idE6UP0aZD/on3S9+D7uw8d0WkyzHo+TXdnLaqvRuRvELnERzGOMvn5Y127TH2vcJRG3e9Q/SSdK1cfwAp/WJWih/Cwg6L4tIcvxOo/I+kr0fxYrvMpQIaCSRs09xDOfQ47+V66nuruF6vvf4Rwp4DkXF9FfcflOHkd8FpUqhGXLi0WSmXsMRIkFePyfwDz53Qsf2KfoMKEhfWkJ6Y5eWMr6w5qrg7VAUL4M3VJExp/DJLQ2Dzm7L6kdiIxuNyzEH2ZyK4eIPKwnxWowGS9S4oQaP3CU7HpJaBXIOYs0GlI7Jv+1VKGl4/1fGk45sVHEyLg3FpS+jbfGDPYHKjAG1LU9L2S2Eyn7dzvhlzsgHMCOUhnUWiMmJq7BOe+jEmfP/Ywf3UgXt3EpMFld6D8N+hddGxZU1rxi6iO2zuMSdQPsqtfdA42uhbRy1A5CxNNDwo2BLhDKpxHB+gEYiIfJur/YNLv9bVFZczhgD9dvylP7ZK3I3IV7bc1cpAVo4fQnNJsYfE7kegsND+WGlxCqGMiJErjkh5c7lcYVpA59dts/lJvCdmZl/he1LWDfExjFEIcTwbla3AuRGUelisRWYxJByQnsSHQj4KKTcW2D2ytjVDn/HmBvBnN3kXDlSvZdnIO1pWt7p0+ZzJsw7kMNYsXluUNhUKnIXGA0ofVLD4T5RJMKo3ry40NByiIN0QRahM0/wxG7iCOvspLP93kw5gbUgHOzO17BwzIz+RFNaCzQF+Nyl8TVZ3mmRnyFpct8OqEXaIyDsEJAseRGpT3klRvgJseGrAL+MLAJHkMY17CmE8y45qH2Lpqu8/FmodqBwgfNmtBFd18AJUGXE7HzuQan6C7pBuRu0jkM3StWF8KdZZZYH8JlBZ3iEn5E4jd9aDvROJ6sOD6LCXJoIrRDwkkp97IJX45Lv8KaHoYtuIPEqHY4F9t2shKO3AxOfMa4Ed+odp/74A5sAtp9h/SPXkW8FpMXB0ImEb5RPtm26Dn9hzY6zFd15eMH0Kyu6+ShagIgdYvmEBt34eI7W+Aj4CpL9WcSVSJ74dlDk2YiUXUrr8AbkqKSGRh1FQniGlHjOD0PTQsnuXnoWW/C/wBOMACP/kTl9ah/A3IlABdj+KJVguaw2QMSjskTTi7hI7dK2hb273/e28yPhcIIU/DzhOoW/Iv6KRfIPJBTDwNidIBfq5gmcO7ERg0ySOpV2D01X5OCq2Yyxw0xbQ05xH3JBiI4pdhoxP9z7UORQ7Q7WPflD0Nid7i61GsjE7cX0PSGaUQIjRZDvp9bNU9dDZ3lZLY5r00oRQgzWU5IFek68hzLchlmNREz3GZ2OLkVFb8ERhOkbgKm8xn/JXT2H339uK3Zj8QsYEE51oxAhCh+ddRt+QZ2jPbirD9ITqAgWss9adMQHtfDlF9qEJ0Bxg+jaTxJxDFSBTh8m0IzdjUN+hc/rj/frHAyg4e6iyIAgtZjrolExH+lMRdi8i1mNQ0z9WTz4LGFeGOI7ILONATyaTPZjf3lAETA4C+RJFUI86theZbfNJ8yDvA/AiW5dGlc1FzHeRD3C+jr9xWohh1Cc49jsiP2H7b50KilIbGBJZlYfU+0J21CTOuGUevzEblGlRvwKRmQR40V9Apy1QW/CODYoAzCMeBnAtFByibRVfSHZN4Otp3Kcc33sHmedlS0nywOcDser/FO3sukrqsrORiFFlBuVCD3kKUex3tt30uJEqRJ1jdJxLg63AarhxPjrcQyU8w8i+InoBmQy+hpCt8Rkd4jtUpRNNw5pwBi1eYxTguvuVySsQl5LKXhjzBHIoDCBtWZ5m26GQMfzb4lnOkV/4Awaj24uzHqa56G20/21hKkNhHtWZTafebeu0ryFX/FI2+AHJaKGoNja2VJX80eABKDpMGI7NLbzd6GwWIZE5ZZ2YOSV+Ac6/yb6wxhxACNRqYp7j1V+D0aiTR0RP6aB5MjMQGTVYh8kWizO/Y3NxbJoOie4/1LweWJdQtmYnwXpRGjJxSpCkclTnOMe8ChbkfB40ToLm7eNC1YEHMozoZU67KZAzOXEDtknl0rHiyf7h7wDnAMoe79jxMpgbXl0eOdM2PeiUTSaVRm+Cy3yQ2N9G68g/++zekPE48mPEH0i7W+hKHmmveiPIW0FcgqUml0gUxFeMfjUPFH+tohtr8CXTwRBHJe37KBLC1ZbNucHkQnYvycqDlEHaAeUr94tlYnYcw4s3KgzwAW6zjUbsRdd8h1/1/6Fi73UNdsEdvbdHry3Snaq8+A4mWQPTXmHg2Locv6COqoDuj3gmCzbpJ/QCQnUxEpL5/aG8tEk+D5Epo+p+95YHx3lGRZQ5d/CaEs9CcIEeMz7+A8kSodVj3JCKfo2Pld8P+F++VLKp4FN5sqW+cgMtdBO6dSPR6Dyxk+/DMChUx7rETCynGJANCmimInlRmAgbII3EatfOZ/PAsuniekiCL7iMJLiNSdXIBEteFyrwjFf8LGEFdHliNuLfRseK74aRW9l3KELx+xjVTcbl3glsO5vW+9TDvQKoq6M5Y3AiclPJUAHMcLjqvP0opJogDTiLWq4sVDf2Igvd0gBIT2fSrZyGcEn7EHhk0RBPEqCdC0C8jub+m4/YH/bU059hnDU9AeaZecz45uRnMZ0AmhG+biuEPutMe6GuUjEArEyXHEadn4HuLCyPy5WpSj5rrmDExPRgiZAZf/W9IkTeLgIZAOTPyxqLah8Qxartw7gPk9PNsv3PrYF7c/34WxCGES6hd8gmc+RGwMMh26jFcu6OhVCTxL/WSqUofaK6M0GCAkLDInu8XdA005xE5kgFMdMObC8YaejduSqCxGqenEZoH+i+CapFYgPPokQb/9tp+HEoDDDt4x6xsBNFiX/hmGWFUREFzRFVVqNsIvIcM36R71fZwoLGXEtemYPhrE6YuOo2aRV8DeT8mNQeMCfU7x0rTuSsZezB01EEUIVGMxDEmkyaqyhCNq8JUpUPJ+I7iS7Ub9EVUNwA7gS6gC9VdSBQTVWcwVWkkk0LiQIWt+fAaemdQ0QDQ9ZDIH4u2Ur97LshZuIQ951Y0sDROQOQSZi2oYgCJ2IDENggdtLdPIB2djTGxr8EYqR0gsCwTpXH5+xH3n2xf+aMSjLlsLwdb81OwLB9CngWouZEoeoPfsPNZ0NRRjvCUEU6peLSsgOYab9suD2o7UHaA7kTYjkor0IPQh7INobPsM1Oo7EDpBaaVBK4lwiXTEdeA6lTQSSANCKcimVRpo3FJ4DIaQtsRENdH+8oSua5G80HODzT8A2uDTJGl0OhlbK+9G+iDBSbsBP0cQIpNBPG6M8FN8X0dMlKHQlpqXHEPYs372Lnywf0XsaGwLk/dkokor8LpP2JSL/N6ZApwtNbvaAnUEEFMVNzgfPK3E3U9fkU33ajbhPAI6GbUbSXOPEPrTzce1hXMXFpHX18DmjoLMZfhcuf4eh1mInFVYLMbGn0IX90L0NkPyVHOJErNwOUH6U0XCRFvCokuItKJQGvQKRi4AwSsfPKaScikV3nYs1D3LyMwmZ4GwKuau3ewc8VjQWJ1b0VsFGGtWddn6O58J6IfAVOH5uzRL8YnZfOiiro8KgkincBjqK4HnoTowUAtwuAw8UCZo4FjnpZklQaMLc0dQDv+oOnHANRfewlO347mXwfRBG9jh6tpoQ5MjMv3IebJ4oc1XDeNfDIHTEFxc5AFstgOey5RdhrwLLNaDZv2cIAar94hdZMx+QtAUqWamGFOajAmQK0rMfGH2f7TZ/z3mvfRnxu482uvO47uHf+M8gbEjA/fjo7SFb8gqxoXohFfps0DwD1E+gAueoRMvoOtu/yp+T7Z1ZbtT5zj4Efbbb9l1vUP09H576Tc+xGuB1MFh6MQKg4xBnUvosnvizaQ16sQmYdaYa9tqAX43oGJzmNe4zpamouCe6ULmv1HwwYEyU5EzSWIyPBTHWrijV8TRL6LRp9i+0839w9vBo6CnNAyS+2SeWC/CuZSRDKlOPVoiXlC6Yd/HGkk7VVobN9W0F+C+yXOrcfGrUi+g87bd7DXGqhylZlugVNKz2j2LiHfu+9ntmlacJSNCqe4AaqV/R110819wFM0XPdJbLIKZ9+PSb0STXJA+lAgQcQoyAvE8fri3xG7GEmdcEDyu+oU3Ll09k4H/ghrIqDMATZM9AdKkTkJ4okhkR9GY1ILUewPuPTbxHyObbduLkNqBldGKewKNYteA/IxjFkQEi97dHRoaaGKVcGkMWlvMDbbiubuRs16ItOCuo2073h2zxW+MYKNBuZTFMsD2LDG9v/Zshr5DQd7jYXfLajetLqy03gpFlJuW9YKrGLqoq2ofhhJvdGjcUWi3wNFgCykUki+lXR6A9yQYuoLJ+M4EzGxh2NlH5lzOBxTPY++6HjvAJcDa4shkI//Zy/M0MlcZFhX0XCYEkWgWXA3Y/XzdNz+XDDwvUiFLoihOcesBVXsnrAUF38Ak74g1OyP9bCnTNHFREhs/Lxld2Cz60CfQaP1OHs3Xbc91z9Eb0zTsktgonqm6qc8KFAw0nLjnnHNOHJmCrhJSFSPc1WIVKNMwZiqPavHRYMQiKLShpMsJtmOi16iLtvKhpuyezpfswt1V+LRuVMc25vXMXXRP6H5Oohf5cGqg5LNjdAki7rnfMVvYxqN34Iww2+QBzT3DtJzETvD/2eLKcsBAu1JT2Ya6k4pO1CQYTB+QtiTRfT7UP3PdDW/CAuqoLlv7168NmHyohq65Q1gPkYUz8L1ZUOzioxdww8KOxJHYWNM0PwW1D2PyBqM+QHblz9d+pXCqhtCkZbm/KBhT8OV47ETJqH5yWAmIFEDfXYexp0AMgPVOSATgRpMPMUDKHuJnnBg+3aBdINsQPQxOtJPUbfkDzhtxVZtZWdzRxlbdgmd45QIbkix/aZnqLn2A5hkBUQnginTOdjPMxKTwmWfAfMQANN3TSabuQ4jkw9CissRpSaiueP8wuFT9+AAQTQ5p1MRmT18p90aoE6XRfhfcuYj7Gpu922La/dh/Cg0pomz7wfeB2ZSUKDMjH0kJxiA2hxKJyr3gf02nat+Vtj/4Q1lzNTlFa/ryp5RY4oZvTG7c1Wkqk4h7y4B+zKILkDkdBCIgsxAwe/CX0bzFk32PelGJgATwcxA5LLimmPsZiT7Q2oX3YJET9C+oru/JzVbaPIRRee5T1C37rOo/TSSqvex+/6KLFURI2DXEctDgJBUX4EkJyNxCI8OpFBTxQMG5gRmvydDy1dzZQjP3CAEQR3KacPT+qg2qBb2AT9igvw9u5a3ByaGvaA9hTJnhLpsE+h7IJoUVOfHcAWnFk5qwwGq2wLyWYQFjE+/hc7qu/qHIc1BWbJJyp5JaUxbejFT+z5CNvoxqarfo/wCzOcQ/QtETy8eTumgpTwFHYJ4Py/ZI2LzpNrHI/peiO5F+R6Tl5xbglgpoy8BWJbQXv1dlGfCx+mB7ZICzv2Sbef+kbpr5uLsu33o5uDAScgEHAgnsmPDrEK+EpchQIAeh8mEXtghjakVxPpa/vyDGPsxNt2xw1/Usr08hIUZz7bcmKYu+wngXRBN8cY/FhPdIqIjmEzKG1D+HtBvoTyK5UW6Vuzoj9G3iIenO0Px3zIFHFNfMwMyC3D8KcK5WDcNqEN0MhJL0bZUQzqlBQhVBtldD2EXL9qughgkqvJSTnYxEXOpW/JT2vkn/8eb4sC2UdgRemHxajQ5DTFT95ELaKnfO/8sJn7CO9KS+RhzUXDmg8xVFdBaXFwbnnHw7A1tLuzI0zBRjJVkaI2fJJQ3/BKiD9O28qWAwzJ4whuMv/YvJ2F2vg+V9yDRFP+wVMZWzO+1jjyik0njeh0ufytwDyK/ZXs5Sx0Gboi8wW/VAAiU1NLTehmil+L0TNBTEGZjMlHR0L1T2VJJRLnoxpA9Myn74sNTtUFWyqQw8em43HuoXZ+Bhf9Mx7KdA7h5hJTcRV4XY+J61CYMWmkQHFYigyb/S848St1rT0eTd/pD2oONUKSwY52CcCpwf1kSvM7TzbmHJyFWh/j01yJxCpf/Lc58gh3LH/Roz7J9hD2rs0xcWgc7/xaVD4CZ4mFOzNgx/oLySxQFrqIebO4+kPtQt5zOlY+XrfRxCcEpi/FnXDOOvvgc4CzEnQdchqTO8rF80BGz2Rx+zTdl4cxIbpIF5zLgLJpziJkI+kE03snEpV9n1/KOMicQElqAjWAuCAd7e4cv1fXi+Bm7lrdTu/gGJPWK4OQHG6EYX5ZhTkSZFZCg4uGBUvuH4xA5AdzQPjkxMZp/HicfZcdt98H8cdDcs2+059opRO5diHwIzGSwdgzBnKFGJzKhuqMHcpsQfobKl+hYsbl0plETVs4BSE7dkpkYdwp9XIxxjRBdiKTCqW8uXww9UINIevTcukQ+JncF5/8YaX0Omn4AW8XTzS8wtK/YRe3inRCB4gbxVeczdgfqfo6b2EL9onNw5lrEWfRQvVsSJE55ZMyDP3EoKVAkNxvMqUOY/HoMWW0X6PvZsfKXIezpPQC05wOg7/UJr0vGVl1P8ejd4mgF+SmO/1Na8RfEvhJxYJlHY8Tk3ERiOx/0r3GylCgKBWWJDdNi+if/o3UzFK8KYqIMmryBmkceofO2R/uHOpKEQjkzKGQpYnDajZqv0nVaF3UPvw+TugiXPXRBFsVi4hSS1Bcenilz3qGsC0l8nYpLQP6O9vmr9jwLGHiAAjRhytCeyWAVGCPGX4bs+Dr8n6DudUzc8SE6V5axEhRaOMvJmppiarKNxHoHGt8G8nowVaXeHYnGHkeRRGjiEHMVkVtaOm8qFN3pE7i+naVGpX6hY4RaReQ3dJ64hrpHloBcEVCfQ69Nk0J5tJvGKY2TYK2Ni5V+VuYgnDYEKu8JEhmc6wX9Bu16q0cBGqPBG1kWxDDP0XDlOL6WeRfwTogD2jMW4n21fjVLZfyhaX4VuG+BeZDOlVtKFfah8nLWSbGvlVmmTL1qDi5qhIevhugkcDMxpkz8naEpJT6Sz0bSaWzfWV5ZtDkfNJMFoQGJxw9yFpAgqRQutxXRz9OweTJ5/XtM6gQ0n/MHn4cboUo1O3omAF1xmXdM9Acdh122qqg6xN2J5L4Id/Z4rx1MXrQxglb/z3zqNRB9EGNqfWXoaEd71AF5iDOIiXDJ4yT2O6SiO2ld9Wh/B58r0OJgbcKmtQlTr5uBS96IM4tBz8Gk60LCp2W1MkdBXZNIILU9lR2ZC4H7oDnyyBF1mFSMS/rKGEcC9GkdInfRfv4vqFv/ZUQuDbnp4Vcme/TWYMnQz/NEIsJJ1WEhPkQpXO4BUvG/03rn1hD3D3YCI8WQoG78n0H6w4hMHwNoT0lrzMQZbL4NtfeAbabz9ltLq/2qCCZoP6G9qVfNwZmLUbcAZCkmXes7CLO5cM/hQOpoaeDRkKhTg+hs7wA4FjTFPPbwuD3zTU0wmRQ2+ztEv0Htuleh8lZMFHsWD3O44bAJ52pTSMtMYGNcLIMQnQ6pcWg+zyHJnqpDohQutwUjX6N1+W993cqy/N6T3mZLzXVngf0HTOrioDmWHs0zGrBprzXm8s8g9mZM99e98Mb8lDd6nIeWUVgL0xY3oOZcrL4Fkb/w6pR9Du3LedRkVN/zUDy1alQnF//rsfXTQOr9yWwRcg+gifaB/IDEbSCOVoCO86XMQ7EoFIqMZQqqx/XfAVRrMDG4vEUOSffXswWIfIVXVv2I5sYo0BTubTiOX3QcffZfIV44Boy/lBs524PIneSzH2bn6md9mNNkSs6+Nqw2jSmm9RyPk4+g+leIGQfW4voCUsLRbfggIXGdijMlUtskmUtU0Joo7PSqXiA7dwsS/4ZY/gaJXlHSVR7SxiyLSL6/AyB6WKsiRnDuxyTZn9K80gZkZx+8PUCP+SdEFwXaodSoXsPQBIlSaPICuE9B1MzO1btKyM5aSuULzZYJC+vI9L2XJHoHwlR/f2O+bPtQ/SAL7CrOfcqci+P4YNymuLprfgfKV1E7DZP6ZzRfTtUyxJfktNwB5PA0v9SiPAf8JzvveraMpHYQuDMkw7WLP4bwRn/gMWoPujQwUaf9AYq9lUQ/Q1d3S6l6VQUuj3yXVdgBape8HdG3gjkbYyaXanKOpm61A7My38qYtGJ4pvhMlcuCumYogxANJQ//iElPRXPLEDKoDjESqCYc0NeRRCeVO4AWtoSDG84iqQi1EWKbaK/29dp0DoL4NBlY47uF6nouQ3m3r+9xyeg0frX+lD+TRnPP4ZLvAD+ha1VLyZnnKVyVgrW+MaRm8aWI/CXIQiQ+OeR1yRhBddxe+gEOfwUWsjjr2RzqlsxBOQMTRbikzx+WOVC7CpE/4rI3YKrOQQ/jwGv/YxLItOAAlzvqp03AZWtCFHSAN6vO92a7PtQtp2PVj7zRL4iheZDVv8WXOdQvno2NP4kwM9TomlEouWQD2RO4/FpE/5uOld8PsGYVTAuLxTIHZJmwsJ50+hrQt2CiywM1ST7c22hCdcqZ8TQUzWkJgdpLUSaa93OkcpCOrGAUoRtnnvarv74OkZmh1dl/lmobyLdRfSMSX4HawNY9nLmcFjrCljly104lCjSIcsCFcNbHxNknMfrJQKviBmchaIyg2fqWPHk7UerPcDnnazpGFUenD1G83lgfzv0SkffTvrIl5DSRp2kpWyrrl56KcgPOvQ8TZ3x1o4pfvWQ03E/5v41vcRzIeFg4xO7H6CZFuFdSqWKPiBbKqw/o5hwSCU5eoHPF48y4Zio5uQZkEi6xmHQam9+NyM2ImwvmNUg03tPVj4xdxAEdLXBGHkR4EKVwuV4kWsH2257pl9zuOXxCnI8Wo7wPlx2lMb/4CkTneoAf0CkfhBW7ys4yyup3Fmaojy/A2X9DUq9AXBJY9EbTil++mBVqlHzTvZM8QuI5dVwnTp5BtKwrT4xnjNM6yJ+HEgV0MFN8Tvu3EwELqk8DQs68BuU8TDgsRR2ivyCK78XxXSSqD5WeIwaIxHsgMwdk/5IQpSNs7z1Upz8dVry9MAc3GSChdunL0OQdmPQ4f9I7GmP+KAK7CdF/p7r123Tc31sW6khxJ6tbMhH4GJZ3IKY+MJbFo2PFL2/7CotMEWl0L6LyEIanUPcgEj9KLrWdeFdC2lpMpv/8uaz/xb5xKTJyBlYvBfc2xMwro8yXfYQ/KVx+M2ruY8Y1dfTxbgxVqE2IqlO4vmYk/gEu+VEoeWd4Q5+9OYAjIjpQFEhDxp59AsP3fZf+GyL2Kki3xqBrLXWLr0cyC/xB22iCPNX5brV0Cpf/HSKfpjp9D5vvL6taLYhwNFsmX3su8EnQKzDRpJJu8hEL5XzDkS8rziCR+HNMBy73LMp9iHsYiR/H2VZc3E3K9DC+ayeb9tqHPdj4LTWNLUT5FbhkESLvBXNSCI0G4+V0mLTB5e7Fjf8tdvcCIrnAF7mlY1zfWnBPofJeTDxlxMil93QAFeJr20F6ixQqsp/Y36RSuN13kqTuKqMyGWT7DWzNdde+FbQRf/CTjCLjzyNRHMK5OxC+QPuKn/vvzU/509z5MazNw/wUUxtej9O/A7nUV/wWGKdH3PhDH4E6T5iVSmEisH27UbvO0yLaJxCeI0meZ1zyItvu3l387a6D/XOhd6HzJs8QPXvhJjpTbeD+GTipuDAOBDPUCk7/lyg/DssnESLfA+CeQN2TiFyExK8MBXEjWe1aYNgjhjcUGhQ6Q1K+H1cUg8v9ESer6bpth8f8B63z8TdTu2gmqjcSperR3Ciq7Q8HWwAu9zNM7p/YfufD/rpviEvnGOvyzLhmKln5K9T8HSaejeZdOJ4f4TxGXZEaUaIYicDlHC63HjXPYeR+Eh6G5BG6bi8xPe8q+4iJS+uI8zOQaDwiE0AmoG5yP14gNd2g3RjXQSraxJbmF0pJ/4IJbFjdDXyf2sVTEL4QdNtsv/DFd8HdieF56P5LzMTzcH2gshvcfcDxqLkMSewIG7+3YS0Ww7WG8lTpPQCvEc/pk7+JJPWQj4lnDBL6FETpFsRg3o1hDrgjpDKzF0OSKEa1F+xyotwnabtrQ6lZpUxpcuprZpCL3gnu/Ug0Ec33AiMtrRQWmMj4gyULLmlH7IuoPojV/6Vrx6/3oJapXTgJSXs6E9UaiGeAOwsxZ4NOR2lAtAETT+rPC5QDRydOnien9zNtya9JkofpuOAp2pZ1+x1hXkLU8h1c9m+As8Lqr2VnB0qU+jKaPwcyb8Plc0AfuMcQmQpyDiJVqJdxGeH570PcjvIkeH+BT+n76rYg3OIpTfbV2wtMqpkF9u1INDlIkI4S5EcEyCP6PVK8n6139XqIcACEW7/0VJz9JKpv8g6TT0Cqj9D14uuIbC9iHkdpxmR/SHtBNSfAzTN6MyTVBptMQfMLMVyA42WInItIYJwLviuB2WEPXiA1iEwBOQ+NzsPxLuBJpjz8UXYsuD2c8zgyF1t66+/BuVM9MbHLF0s+nP4SNV0YuR5TdTq6ewfIkyBtqF6JiScG1GwEbaJIsruZmD8MRIF03ytmHOFsFnFfxezaXMwH9hgLYmi2nLioht3ueqA2nL2MltU/QVIxmv8ak3uXsfGenv73H/hHa647C5t8F+FsXyruGOHwrSR64Z1PUfkh4r4K+iR1+Rwb7uyfe9XsvohcdBXkrkTkDM/wTcrX20tZw9oeUGm0ZwRbgvL98qdziOIfUjvpRjq4GYDNZyfUbdmKkEVkPA6LiVK4pAeNPw7Jm0Be54v/2InSh3AlmHH+Wo4UcKCCihngAJreN1mRgGgf6m6jbe3uIiS4x2jzsGdvPAvcO/3DdXrkD7wKxhTHkHyOrP4HG+/p6j/bCzLQ3EftkotQ9xXEnFfG0ztCdTxlNCpSFeF6d4H9NpjlYDbQft4WWOZoDz8+45rTyUeNqL0MlVOAqcBk30UpZajoIXED6QD+n3Fo/m+YuvR5ti9fy7xOoU2yOHzPspgYTXaA3o7Y00GvxqRTuOwLYHaBzAfGlT7zSC2KYgr5SlwmjPAcLteDaCbsjVJaAoygdjewmg6zaR+7hYEzLZPOrMX1LvT0d8WTwyM4nPXQrRjUfpls7gt0r95eVpxXyFv6qLvmClQ+iTEX+Z7kovMO92QFobk4jYkjXN8mbPaniPk1zv6OzlVBF+tWqL96Oja+DKMXkDXzET0XydT6Kwynul78u0CVcqjcQNIP0dNcDhNfgCZXAGtp35HCVZ8GjA/C1DHOtoL8HNEPgDkVl/wRJ7sx5jgMEz14cCS12gRwvVjtGrADmFbI50HG9TdwTfyRdXYnov8XqgMj8I/dnvdwQwQ35UktOhuJ3uIL3Y50U3sIeVDA3YzLfIruFV3FUK04mi11i6+F6KMYuTjkLCMAcQZkR6JQe2S34fruQ1mFZG+lY/XO4o9OvvYkIn0Z1r0S5XKIzsCkCtp0+TBtZk/2iCGzHJB0GrXTAaGvPk3c/WdANZIWNLsZuA3VqxBzpq/xYRfGzERkysjqzQ2+EoamsB2ovNjfAdQZRPauwyXyLO1VvykZzWAOPEOZ15jmpd5LMekzAsXiEYz/i+W0FmvvJcVHaG/uKgvfSjoEtdddDPbrmPg4XK4vEO8O53WXITtiUNcB+gQitxL3/VcJt29MU9M7ncichHNvBHk7JlPlV3mXQF9QjJF42NEUxfd8F0pbzO7jUZ1NlBGcbge5F3EJJn49zr4EtCFmFmImjQLjp0gILKYHYzr6O0Ak27DaikS1JXYUdf44O7sD5S7P61jmFP1Gk4FlCVuveTliXhno8o5w4isOSUW43C9x8lFaV2zz11Ro0A+XWLdkLpp8wyuOZ90IGH8ZsuPyKB0gXyI9/atsvSkk5fNTNNSmye0+BxO9F9XXI5HPp7wGmmHkyy8KoZTflcQu8eGyJNC3yucJ8cdQtw2kFTgNpDpQmI+SokcBXJZJ6R62I7GvaQcc2xFpD4lTSJbEBoqTZ7Hmvn1/cKBXibgSzIKg2HIEw5+AXJFbR8Rn6VixvqxmyRsYkqdm0Vmofg+Rc4NDyPCv/EEdRxyofoeYf2NibgsbyniZama8isS8H9GLfeJoolIT+RGBkxWhCtubQ82DTFhYD+a9GFON7bsPzBTgolBs14voGWBSg8uXHimTEBekY1vZ2LwTFkRxkZ3Z5P6IpjaBuZSSBKXDpEDyzzMx/QBdTQWR6kGS2mbH8Y219ObOxaQi3/B9RO47PHBxqOsEvsL2Lff6Hapg/AuqYG0f9deeS6I3eeMvRiXDp4yjmkOiDEKMul+Bfh2J17Lt1q1sKxj+4ksRcz2iV4KchIkZUrnRQ798RWKHJg8SGUcUvwuNpqG2A2ECymxEZvgDT5nhjX80wd+UpFbVbS9MdmmF7o27SLPbh3jFm45xuW5U1gdpmn2vPL3ZV6B6xpENf7Rw4BHjkq8g5raSUgkuhGp9TH3tadj8hzHpCyA/zMYVAPioOoPNbgP7LdSsoH3Fg8XFZMrVszDmrzDRYtS+DEmHyUqGQXD6UB0gHSF2BeLyuPhdqO0GOjByMsiU8AgDi52OxvbPGM3nEOnw/zlNCxJJEVPYTW/fNn/tiW9i9W1rz2H4fWj43gv06UnoUb0azCz/+0ci/CmUNIug9sfk+CbdK3b5cKc57yfkU8rkNVNwub9FotdCUug+GgYDCyWOEnkKc5f8CrHfJ85+v5jk1i6cBKlXIWaJj/Pj8ajVAGNGo6e/IIpw2ccREhzXIGY62FZfxlygPCkY/ag0/pCEayta2G/nBb2cWa0pv8Lr075RobCSRqDmKTT3jA995g1W70/RiYQ/waSqPXf3iD+A0H4nQPI8sX6U7lXbveOuy5cSd1GiSW+G+E2ISQcygGEyfmOQ2KBuJ3ArSfJe2ld90xt/Y8TUq+ag8V8j8j+Y9PWIVgXyV0JH2WhIHLVMgX4VqpdB9DY0n0cZhz94kwHhzijsfQ4NccomRDeVr95lGrDRDlyui2JVn4DRp3nlOzYwuJqLFFnPavNzUKk9gndofclA0gr6WbbN2MzAgxyA+kXnIOb9mHhm6D2Nh8loJOD6bah+A/R6ulas9+cPjWmm9FyCpr9LFH8BZCIum5Th9zKKrKbA0/8cRLNQcwYiDjC+mlQZM8NPyYtIEkp5lhVWvprCXexCeIliK50DlWdofoNl9sL0INBnmKgbUkT2VQh1gePnCNTHB8oLlTW07/pWEJoIDhqus+G6abj4m4icjOZh+IipskhawLag+hZq85+ifYUvSq6fVkVd7v1E0S2gF4ZSBWEPHa5RYf/qowbNI7oS0QswZk4Icccav5EGX24nZ7cX3guG2lkIe7aiPFI4LcDZ7ahpA/YiprzG//7xnTFWLgZCZ4+OsANoHlNlUPc7UtGny6o6XTFxr104iXzyDnAXeHtzw6A1pi7wW1ah+R8TJX9O55Z72bDan57XLr0Ql70ZMf+AmPqyYp3RaC/Ol4+4XlTWgSwGTkLVDE/IOOzLvyIxGPcMO1++g3mN6TJDLZwF9LyEytPhcAPQp5CCt7S5fax3EcJZiEmVnb6O3CqFCM5uR9yP2XbrY3sqKS5zmPS5GPN3/tqcDvE1BmxfPL2Iy30Jyf0TrT97NOQfULPkz8F9HsxrQWpRlx+lyaK/HzEGx64QM9ci0cl+1bc6RnWZDS7XhUbPwTLnxcWLnvwphcaI9166C9HHMZGE+L+NlA1H8hP2vlLlcjEwM3zcSKs4OiSVQvN3YZJbvSrhGlsMzWi2NCw+GacfBHNcKbQdsmvU4qGbag7VL5G2n2D7z4K49YKYqUtvQPg0Ei8A58oIiEevISkJ2G4gRmROoDnXMSxKbtD8JoR2/9wvsmUOIMrxL6RZtswR61M4l/UbgOlE6dn7Z17udwXjjkP1CIpW210YbqNt9bPQUjrwmtfpmRwSuRqTXuLJqoa0ElFLEKHbBfItOqr+ga2reqHJMPOKOuqmvAPnvuQFyJMQmo12jWORUMg4AdGTwntjVa+ghGKJeQq1bf69NWUoEMDmE8KqmepGk8e8s7vnkJpt/Yy9lACHU+EmgzGnhcOPI3BjUYQmtyDROn+Xra6I/LQ056jJzQO3MMT8Q5y4qaf0xu0Evk7HyhuLdUan/Hoi2XEfx0T/5UvMtSD3ZMaGzUgVIhPHlj7bfhAgeBg6Xiy357LJCIbT074T+F2oFcuy7dTsAUQhRyCRC8mjGHBRM23LN/pm9kIC3GjC5nYtEl+1D0Hmw1z9XS+qn6Uj+6liaDXjmnHsHPd5JHo3LmHs6XsdTaMAMgg4WU/7b3YF3YqBDrDWO0D3tE5w93rNVyJo2Y9xtwjqyrZ0lZG5KQm6tMlvcdGT3iB/Vfa3mx1Tr5qD8KeQ2hdV+6Eav4IxOP4D8l/3qvZAw19Vk5OvoebNPs5XWzHCI7qVmZCmbUQ0sFt0SikxKE8mafJsDioPouS9YEWr7NXwASbnJiLmTxCNR673V2y4Lwd6C1XjQph2pi27J8WmXgt6gZfXGarQI7QWqloc/0I+81XftNJkOHFRDfmdXwTzZkSqPU/osagHMIpWf7/pJzi3hijp6Bft7GkUa3yiE+/qAJ6AQtHQqLuxcFAnXbj0arZ9f7e/lx+XVao2GYRXIekpkOjQxP/qEOOpYYTvE6c/S3dzm3f6NWl6oo8g5gZEYp9wHyXx89gN/AtdixbRX9HmOvtFO3s6wOXegExaEfkZEZaG2r2UN4Szg670LtQ9ikoSEo3hzge02GgvPE3d7lCmscCUNfULkx86CfR4xHjqw6FJeMPf0F8T82namrv9rrkwTe2kv0T5iA/LrKsY/2haKOkjitaHMLVfM9cABwi1PttyWRJ7N2pnkdNTy3aHwR1BTBk9hwyzA6hvanCuB+G39O3wBX1M01JpxoKIWBYCNagdqlLiBInB2adQ/RDbVj4XtI+VuqqFIP9WFHk+KiROj5b43wGykbjh6aJt7N0BCsVPaxO6xt2HRm2YfOYAHG0EoT1x/sCVHVh9kM0n5Eo7UnDSGRPTYK5ApK6kQ3VYz9J6qr/cFox+k46VDxT/Zu2SC8HeiInqKzY3quzfaxOo7kT052ztDOjgtH4L9D4Mo9mirhMne4FBlzlfcrDMofKQRzvMCIRAWihqyhLrllKTflmlas5EKH8SemiHAv50SMogPIDt+7a/x8Yo3PsbMVWX42x+DJ+SHo3DIrGC24ZLvlUicG52+3OAUneUNffi9MmQOAwSR3f7Ce88sRWRroAODu9uoBJq/qWHntTT/a87XI/LGETrQqLsDt/hIsHlH0fle3Te01VEy2qXXIfY16OaHnXtf5URoU5w8hwddzxRim76L9DxPmOortueH8QxykaoD6rblEZ5CpIZoXl7CGHHwYYB6GX3ra1lb7g9HgBDkpQ7TCrG9a5AzD1FPtQFC2Iek3dB6gQ0myCjvbzhmBq+GcnluhD5TZnh7+EA+zHSxv2cYIZ4qmFDFtFfodpTVhA3zKlA+Y00sY+d7PD/kku6UfM7X9Nf41uLWiZdhLrTPMqEq9jcqIr/LSYlIC1Yu2pfNrEfB2i2+zakEE+1tOQxeg9Cmw+3h7vGXfFhx8LMHvH/Ad/bAaEIeDp4ey8p+4xfDG7Kc/zFGRzXAw0eZaJy2DWq7F8CD6w+Qdft64plMQfvAAdiJE0ehmyr/i1qWkr0fMOUDIuKj7BkPFPT8/qjV/1C96GJx7066K9IjXu2eEvZEyKQCzBR9egg/q2MfjYpksZlnwd+4d+ap/sMpg9vFFbfZovhXlx+a9gFhiksCAqFommsnVGiammSYk4SY8E8Gspw4kPbkQq/YyCyv2Nzcy8zFnttgIQI9ISw8I8i4Y/K8PBnSnDu51RX3cHgveyH6gBNJqz4g8TajREu+xOQdUhqH6J5h32DQe6eKUh0HvMK8jotUsxJ2sghrAG7Y4hykl14mc9oAICglfh/1A3xOhbRr9jc3OE13hgqB1jmiiwQe4x5Ssfqzaj5IS73AhKnh2kXMOAcYiYB17ItmyndYAHjbU6w3IlKn0+GDtMZnXhCgHIZUS1Qj1MJf0aV+RsDyc+R6H4/P/P3Z0wH4FEALIiZ9OpaZi8sEMfKnqHQghjTugrcdzxh6nBEBhLoKiJB9DycXOKvpbm8EtSxwz0E+jjq7OHBoYpvYEfIBEeKsQjPhv7YkUG9KuMAQQtxqLmZ7T99yofF30wO0wFCfU3d5GriqvPpTC2kduHEsgS47AK6hfbfdGNSt6DJL0rFY0OdEKsJEjtg9O+ZvPgk//78shqcVT2I/CeafdLvRge7C4RTXVVQt5C6JTM8eRjQNq8P5Juo3e55/VUr9nekjT/wF1n3FJGs91bQEu+vNu0AHGCZpxZpX9FNknkY5C0k6Tn+e1sHwH/r8rAgou3WPwD/htqtZbY/hEbiyWpAYkRejZHraLhyPJziSpBXY0R75naIbgn1QHKQK3VgO7MWE/0Nqlf6t6+vAhzt/ADV34RnH+EVXoJ2rxbKsvf1qowhTXwjz19k3HeRzi0UtZT3PQ4Qv27xJ2jZll7GzzUIN1I9dzu9P9zgmZY3lW0zm/wE9579AtW5R1DzSsRMLqNLHKq4KCiWiCByPs68QO/yR6BRoDuGSx18w1FzxqPkNUGiBYESJV9yogP8M2JiVM9i/Nw+en78IKxVeCrHhLkPoboZ9HRMdQ0SGzCCRIKIlyQSEaTwHuH9Cmo0hMavZZT2jyDyUbbf1bF3DbtDcoAynP2ks59mt30XcBWZ2U/Qd/dG32N5ipTaJ5sMfMPR+8xGqk7fgOiFmHgq2ILQ8xAmjmqReALCPKpPSzh5x+9puycQy87IsOuencSn/YGYTmAmJj3dV6+6XGmF2KeKjfikO6pDOJtxc8+g+oyI1EkJnXc8S+9Tv2HCGb9A879A3VNgt4FrAd0VdoPNoM+AexKnOdDdCLtBqyrdYkMyEiRlUNuJ4fO0r1wTFu0DOouKDnrFbWuxjJ/TCnI9Jn0+1XMfpfcHL3jjb4z8brE2tFdeLvR98ymqZrcCp2Ci43yWrkmZGMUQhEM2h0k1oLyMnqSa6tO20Xt3K2xOoDEit3w3vWf/lgnJNqytBmowqUlIHHntXLxucDhiLntw5f/OIVEdRPNRO4/IzGX8vFOoPm0aVjqw0olRg5IG7UBMDiQXpEFTQA5lMkIKIQLGVxxgSIYLVb9/IF/1cbKNWVh7wMDEIRhgUwzLEuoWfxFT9X5s/jfY5JOM47dsXdVT2gGWBYKshWlYnaXu2ivAfRg1l2DMRG9nQyn6oLkAvYLaW3Dm/yLmcTpu3dLvYYy/bhpV9u3A1ajMQFwtSG2JqmcfYXqRYCBQ4EsMtgecbvU0Im43Kq1lSjSK6HQkPq5cjqy/j1XGYcy5F0B0+Q6ImuhY/rUyezqgB3wIK9DlwOXCuJeyuPxsTOpSjFuKpYO6k55l57N9PkYujA0WbkjR+8MNmDPvIk5ilNMQVx1QoiGKhwt6xKpgzkTcXyF6EuNO60HO2UnDmZadJ0bkV+2i96lf0fvU/1B1+hrEbUXFgq0FTVCbQ51DcajaslcS5BgTzwCX5HD5BLAYxiGkw6q+A8w4RI8HpnuRapf1Osz9DL+SBxy2/Usek4rA/YSO2/4xRCAHtbIc4iTckIJOx9Te9yGZL+DyoPQBD+HkH9lx233+sxuNr8NYVjbzCzNMjU5EzSdA3uIPVJMkoDQyNBpdRYnjPBrlEdeKk19g7C/APEj7iqf6//zCDA02RqtOxXEiMBvlBEQCk5wKDutpwVXBWMQ61JwBxChZYAroFIQ5QG1Zkq0Vgx8m5MeXnLUQ2U/SevutZZHHcDvAAk9ANXXRaWj0b2Be50t0LCjPIe7nuOjbdN72myIkOXtXzIaJSTEzn/qaGVA9B+V1aPIXROk6v0BaQoJagDvlEHpsC7GK+DBbwdksaAdIF7Ab5EXQrSAvYpJ1oax5HE6rEMahZHzCroJIFmUeKseBZhDmAuNAJoDuQrEgk/xqr5P9zlYJcYbZAfKYqhSu91+Js//KtpNzgRKfEXAABBpTgKWm51WY+Meg44AISQmaV5AHwT2A0dtpW3VXWQ5hOL4lUzxUqr3ueCR3Psg8lItBziHKnOTVPPIUleaVHKIDFM91wG6xx+4RavVVwETej0KPvCZ43h56ULYABlHrkSFxoDEq6XC3WaABVUGkE9UGRNJAFtVxSBT7P62F6g+trPjDZ/lhbRRU78El76fz9seKuekIOQBed2td3mtcpf8J4UPeaG2fTwjTwfbyDyLRHag+jOSeYnvPxjL+/v5jyqJzMNE5wMWInIraWYhpAJmCSZclj2Wvfoew6mGx/suvDBCZC1YalTlE1D9S0QRcrtfH8/giCJWw7ZIUt2ARRbUWkarwPRkBmdWKA/jH24N1f86Olbd7SsybkkNBFg53onwr4vjrppFJ7sBE56MuCFATanBMCpMG29cBuhrhV4jcT952YWUndbu62bS2b49PHnf1dKrkMkx8Ok5PR3Q2aiYjzocnIilUU4iMD1YbNLkGa2JzeK4etagUDuS6Ed2NSh4hi2qMFLh8tAfHNsRkA63GeFQmIFoPOtPrIAyItipjhOL+KFAd6v8h5z5J9/wOb4cHv/oPgQM0mVAEF1Ez+fWIfgGTmumlPQv9xoWyAPGIjw8/cqg8ADyI4SGw69DoJUyXkplmiVqVTWuze1jX9NfOIpef46FFU48yBeQMVDMIvag2YPQ0tCB+JzaINXfh5BnE5UAMSgbjXgDZjEofSg/GTgpizw7MFJxejDFn7GngOvA/Kqv9yA2vWuOSZ8hVXepZ+Q7sxHe4doAyzLUxoi77TVTf6o/7lT3LDWQAqK4JSoKQQ3kJMS2gT6K6BZHHEbMT8jvZfvsz+3bCwmgRz2U6TYtfaziOOH8imkQoNYjMA5kEegJOTkaYjjKtiPYUkm/RVCWZHWVJr6RTuNwWhBtpX3lbf/s7cg5QGnVLZqL6bUzVa9DePjBVe18+RUrhciGBTCzIbpRsCE9sgIV2Bru0oDtA/4hKByAI1ienWDDjQGd6GLLoZxlgnEdoilh97FEcJoCk9kAstfB/WoEwR4fxWyRyqHYj9ia27/pEyCMPy/hhSCVCF8S0r9jClCX/isnXIpkL0Hwy4G9Ivx1AXchkxas8YiJEJnnHMPXFEp3yjUQdvmrB5SnUFAkSaoxiTJr+53tlRxBa3sClpehMk0HaGivJ7CgaFkwazf8KF329DEQ57O15CGtRNjloTNN360aqTslDdCkwcR9xckBMilBMISwK5cTW+uI5a3E2QRPrDTUJiscmcHCG3KLIA28TXJIv+3mLJs7/24aDLKv9S0WKn1H2qhj/KBkJkkrh8g8jfJqOFb8/lBPfEXAAgHqBkwwTq19EkxjMJYEo60CSxYEOERVfQlx8FQvIAk9/v5d45+j384XfKbwocxoqhj7ahxiDujYi+SjbV9zhicmak6H6+CF2gE0OXhOx+0c7kbOeILZzfWmAyBAjJrLnil0x6KMt8Pd5InnUNhH3/T92v9lCvetfa3b4CM5wXLuvhqxfPBvLjxFzXuDPqSSUlXGgSa9BrUP5Irmdn6d77fbDhTwHG8PEaBBKFdpWboD4RnCbkbQAucrkVsZ+jR8TiM3kLqT3y2XGP+TkA8NF6VESy+649X5EP4TaDUicAa04QWXszfhDx6BEqFuDkX+k/Z4t3pbmDUsTxXB3JAksiOm5+1GqZ3eDnIekasEmFTrByhgk5ndInEKT9Yh8nO0r7vcHnWsZyrh/JB0A3yS/IKb37oepPg3EXIzIuANEhirj2BlefFCTZ1E+Q8fKlR7x+UYynH90hHpSLxRoFOpffJKscyCXgokrTlAZ/QNn3YzK+9ix8pYAdw57uDxCDtCiMM3QtbyH9Gl/QLQH4ZUelne2Eg4dy2FPWP19/ddb6TzvTlgr0JKMxAWMICtBC6BC9i97SZ/2GEIPcAmSSoPrY0jLMipjLKz3+BKHCKebEXkrHSvu9bF+kwxXzD9I3DWiDi9Fbs/Ji2ow5oOY6EbE1KBJFshU7OKYWPi9cKGkwOWfxcn72XHbSv+9ocf69zVGOPQIVCE0RnTd3omt+iKafAqXPINJZULlZ6X++Og2fuubWlA09wBqP+GNvymUwIyc8Y9wCDQwJ2iMyDb30Pv0A4yfsx24EDFT6C9oVhlHW7wvsQk93rej0SfoXLk6oD1HZPE7gsxkLaGqs0nouelRxs15GtWLgZphqB2qjCM/BIwExo970OgjdC5/2Ou8rcgdwYsaLaPJULduDmp+hJhzfekyVBCio2LxzyNxjDpB7SdIJzfx0uo2hqChZQzvAAMdca3S+/R2xp/5c3ATgPMhFtC+cJ2V3WBMJrtkMekMmnSgvAfy36FtdedoWYBHETlrOPLueaKdSXP+gNOXUGZhUg2BQ9RSkSMaQ/G+5sHESCpG7f0k9h/Zcf7/0vutvjDXR3z1H2UhUOF6GlPhBDBi6tVvwMU3IvKKwCZRCYtGv+E739oag8t3I7Ia7H/Rvupe/yMjC3OOoR2gmBxbT734VqXnvx8lPfcRjEwD24DE4zzjhHNDR6pbGUNn/IhHeQDccxhuZrz9CC/d3gIXV8NmCy2jSk9tNBtRINdtttA4gbq+vwPejUQzUVfZAUbjdPmRBf09Yv6B7cvX+m80RYdKXHUsO8CAcUOK+m1nYvVTGHMtagPFw0ET51bG0Ce6CZJKo/k2lC+Rir/FtlvbGAOHmjJGlpbSg6y59gSMXAP2PUjVGb6/xvmcoaK4MpLhTojjTYwx4NwtCF/F9a2nY/XOQeduFI4xZDBNBtZA35u66G14hHHjHwfbieopRJlJXrjaZdmDSKgyhjjJtSCKxLFnbLC/Q9y/g/2/tK9YR++GbKAtobIDDMv1zo+9HCvQ8Ffjye38C4xcBXo5JlXjNQpsQfyuEh4NneH7NldJG3Dg3JMYXYvIrbTddqf/scagxzx6UJ6jzQHKdoOWuNgwMXNpHbnk71BzHXAKEk0qY35zFaKrwwp1KJEaO4CtqHsE5H/oWNHsvz8/sGWvy4+1GxzrRhGQolaBtQkTrplKmg+DuR7RGjxPYv+5rIxDMA9VVPtAnkD0S7Tv/F9PT9gYBQksN9bv8CgaCzNMqjqelLse9J1Iqj7ILlXCogNHdcJqEUdeW0F/jZGvUpW+m810jaUQ51hygP6Iw+RFNRh3PCY6F+QdSGpBUf3Fo0biQYBjPjwqxIrWP4sgaOJ6u3xhov6MxD5G18v+WMLyVcIj04oDjLoxyLZct+RliJwLegGOKzHpk70z5AhCZBqc4RjZHQr8O1jQNBKLZ4y34PIPoNFa0AdRHqTzthf2+WwrDjCacwMimJcUJ6zhumnk8q9CzJ+BmYu4s5BUjX8MBSkChliyddSs8hqMHpC4KPTtcoDbhLIBo+sx3EXrs2uhJdToL4hhrsAMezQZ/tHuAAPucX4Mp0g/mo0pi84hMq9F5VLQ4xGZBlJTEswrCPA5V0RCxs4z07KvUhIjCccjmiSotiLRdtQ95uFMfu6pLMH/YGPYEprd0YwgHGuxr3jGgRbpl8jVLpkHXIewEPQMlHGIREB6z0ekY3BaVUFzqLGg3aj8EpMsJ+EOum7vHCTEUY4R2KyChpSjRw02xo4/Duy5WHk5hiuQ6E+KIpQl2SRb0hNDBrBej8QzLVvhC3pOBZUdMUWW+IJ4OfpLVH+L6i/Jy4NMqd7NZnJHE5pTcYDDu/cBq92CmAkTp1AV16LJZIzMw5nzEfcnWJlPXD2pRGCh5c4Bile3FDX9kalDKc/QUsytgVFD1ICkgiZCiMwCmKUJOLsVtAVYTxz9HuueJNZ2enp2suvejkFWdjMgZKo4wLHpDE0CawysDeryA0bdkpnATNDjwEwHPRHVemA6wkmoTAWdSFQ9wduUDXmnDHCSg7ikos+Ua39YsLksoi/hxQO3AE/ieAHDNiRqh2QbRl6kdeW2PT93QexVNI+tUKfiAIfkDNMMs3cJG1bn9jCUpibDfzxczzg3HZGTyZt6hAmIngGRQV0dorUg2SDofTxoXEJi9jknCmRRbQPJI2pROhDZDfSCbkZlK7F2kbitSPQE7St2DfpZsxem2XCig053tEGYFQcY0edUKLkoOkV+0J2iMGa/J8OOF09Eol3kclVk7Lk4SSNFmHVvYY9X10lkN5YNxFW9pJI8225t3fclzk8xu96wYaJCq/Or/NGN4FQcYFQ8u6bwtSV8bQ1f9xJKHfJojEqfPS0Y9bzwtRLKHOr4/+ju/WH3s4spAAAAAElFTkSuQmCC" alt="회사 CI" class="w-full h-full object-contain">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-black text-xl sm:text-2xl tracking-tight text-white">’26년 연말 인사평가 안내</h1>
+            <span class="bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase">임직원 포털</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 상단 컨트롤 버튼 -->
+      <div class="flex items-center space-x-2">
+        <button onclick="window.print()" class="hidden md:inline-flex items-center text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 transition">
+          <span class="mr-1.5 text-slate-400" aria-hidden="true">🖨️</span>인쇄 / PDF
+        </button>
+        <button onclick="resetAllData()" class="inline-flex items-center text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-xl border border-slate-700 transition" title="시뮬레이션 초기화">
+          <span class="mr-1 text-slate-400" aria-hidden="true">🔄</span>초기화
+        </button>
+        
+      </div>
+    </div>
+
+    <!-- 4페이지 내비게이션 바 -->
+    <nav class="bg-slate-950/95 border-t border-slate-800 px-4 sm:px-8">
+<div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 sm:space-x-4 py-2 text-xs sm:text-sm font-semibold text-slate-400">
+<a href="#page1" class="text-indigo-400 font-bold px-3 py-1.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 whitespace-nowrap transition"><span class="w-5 h-5 rounded-full bg-indigo-900 text-indigo-300 flex items-center justify-center text-[10px] font-black">1</span>1. 평가대상자 및 평가그룹</a>
+<a href="#page2" class="hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 whitespace-nowrap transition"><span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-black">2</span>2. 평가방식 (상대평가)</a>
+<a href="#page3" class="hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 whitespace-nowrap transition"><span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-black">3</span>3. 평가자 시뮬레이션</a>
+</div></nav>
+  </header>
+
+  
+
+  <!-- 메인 4페이지 스크롤 컨테이너 -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-1 space-y-16">
+
+    <!-- ========================================================= -->
+    <!-- [페이지 1] 평가대상자 및 평가그룹                            -->
+    <!-- ========================================================= -->
+    <section id="page1" class="scroll-mt-32 space-y-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-slate-300 pb-3 gap-3">
+        <div>
+          <div class="inline-flex items-center gap-1 text-[11px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-2 py-0.5 rounded mb-1">
+            <span aria-hidden="true">🧑‍💼</span> PAGE 01
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">평가대상자 및 평가그룹</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">2026년도 인사평가 기준일자별 대상인원 현황 및 13개 평가그룹 정의를 확인합니다.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          </div>
+      </div>
+
+      <!-- 상단 요약 카드 (3단) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- 1. 평가대상자 총원 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-2.5 h-full bg-blue-600"></div>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-3 font-bold">
+            <span aria-hidden="true">📇</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">1. 평가대상자 현황</h3>
+          <div class="mt-4 p-4 rounded-xl bg-blue-50/70 border border-blue-100">
+            <div class="flex items-baseline gap-2">
+              <span class="text-xs font-semibold text-slate-500">평가 총원:</span>
+              <span id="statTotalEmployees" class="text-3xl font-black text-blue-700">0</span>
+              <span class="text-sm font-bold text-slate-700">명</span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-slate-600 mt-2 font-medium border-t border-blue-200/60 pt-2">
+              <span>* 평가 대상: <strong class="text-blue-900 font-bold" id="statEvalTargetCount">0</strong>명</span>
+              <span>* 평가 제외: <strong class="text-rose-600 font-bold" id="statEvalExcludeCount">26</strong>명</span>
+            </div>
+            <p id="standardDateDisplay" class="text-[11px] text-slate-500 mt-1 font-medium">(’26년 11월 16일 기준 재직자)</p>
+          </div>
+        </div>
+
+        <!-- 2. 평가제외대상 (임원 + 하반기 입사자) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-2.5 h-full bg-rose-500"></div>
+          <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg mb-3 font-bold">
+            <span aria-hidden="true">🚫</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">2. 평가 제외 대상 (총 <span id="excTotal">-</span>명)</h3>
+          <div class="mt-4 space-y-2 text-xs font-semibold">
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-100 text-rose-950 flex flex-col justify-between gap-1">
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-1.5"><span class="text-rose-500" aria-hidden="true">➖</span> 임원 직급 이상</span>
+                <span class="bg-white text-rose-700 px-2 py-0.5 rounded font-bold border border-rose-200"><span id="excSenior">-</span>명</span>
+              </div>
+              <span class="text-[11px] text-rose-600 font-normal pl-4">• 해당 직급: <strong>이사, 상무, 전무</strong> (임원 사유 제외 포함)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-rose-50 border border-rose-100 text-rose-950 flex items-center justify-between">
+              <span class="flex items-center gap-1.5"><span class="text-rose-500" aria-hidden="true">➖</span> '26년 하반기 입사자</span>
+              <span class="bg-white text-rose-700 px-2 py-0.5 rounded font-bold border border-rose-200"><span id="excLate">-</span>명</span>
+            </div>
+            <div id="excOtherRow" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-100 text-rose-950 flex flex-col gap-1">
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-1.5"><span class="text-rose-500" aria-hidden="true">➖</span> 기타 사유 제외</span>
+                <span class="bg-white text-rose-700 px-2 py-0.5 rounded font-bold border border-rose-200"><span id="excOther">0</span>명</span>
+              </div>
+              <span id="excOtherNames" class="text-[11px] text-rose-600 font-normal pl-4"></span>
+            </div>
+          </div>
+          <p class="text-[11px] text-rose-600 font-medium mt-2">※ 제외 대상자는 상대평가 등급 배정 T.O에서 분리됩니다.</p>
+        </div>
+
+        <!-- 3. 평가자 라인업 요약 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-between">
+          <div class="absolute top-0 right-0 w-2.5 h-full bg-indigo-600"></div>
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg mb-3 font-bold">
+              <span aria-hidden="true">👔</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900">3. 평가자 라인업</h3>
+            <p class="text-xs font-bold text-indigo-700 mt-2">그룹별 상대평가</p>
+            <div class="mt-2 flex items-center flex-wrap gap-1.5 text-xs font-bold">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 border border-slate-200">피평가자</span>
+              <span class="text-slate-400 text-[10px]" aria-hidden="true">→</span>
+              <span class="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 border border-sky-200">1차 평가자</span>
+              <span class="text-slate-400 text-[10px]" aria-hidden="true">→</span>
+              <span class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200">2차 평가자</span>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">* 대상자에 따라 1차 평가가 생략될 수 있습니다.</p>
+            <div class="mt-3 p-3 rounded-xl bg-indigo-50 border border-indigo-100 text-xs text-indigo-950 space-y-2">
+              <div class="flex items-center gap-2"><span class="text-indigo-500" aria-hidden="true">📝</span><strong>승진추천서</strong></div>
+              <ul class="space-y-1 pl-1">
+                <li class="flex items-center justify-between gap-2 text-[10px] text-indigo-500 font-bold"><span>승진 대상자</span><span>추천서 작성자</span></li>
+                <li class="flex items-center justify-between gap-2"><span>1. 본사 직원(팀장)</span><span class="font-bold text-indigo-800">상위 리더</span></li>
+                <li class="flex items-center justify-between gap-2"><span>2. 본사 직원(팀원)</span><span class="font-bold text-indigo-800">본사 팀장</span></li>
+                <li class="flex items-center justify-between gap-2"><span>3. 공장 직원(팀장, 팀원)</span><span class="font-bold text-indigo-800">공장장</span></li>
+              </ul>
+              <p class="pt-2 border-t border-indigo-100"><strong>제출 방식</strong> : 서면</p>
+              <p class="text-[11px] text-indigo-700 leading-relaxed">* 승진추천서 작성 권한이 있는 분께는 인사총무팀에서 개별 메일로 안내해 드릴 예정입니다.</p>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-indigo-700 font-bold">
+            <span>총 13개 평가 그룹 구성</span>
+            <a href="#groupSummaryTableSection" class="hover:underline flex items-center gap-1">그룹 상세표 보기 <span class="text-[10px]" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 평가자 지정 기준표 -->
+      <div id="evaluatorCriteriaSection" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between flex-wrap gap-2">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+            <h3 class="text-sm sm:text-base font-extrabold tracking-tight">평가자 지정 기준표</h3>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">※ 아래 기준에 따라 13개 평가그룹이 구성됩니다.</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead class="border border-slate-300 bg-slate-100 text-slate-700 font-bold border-b border-slate-300">
+              <tr>
+                <th class="border border-slate-300 py-3 px-4 w-28 text-center border-r border-slate-300">구분</th>
+                <th class="border border-slate-300 py-3 px-4">부서</th>
+                <th class="border border-slate-300 py-3 px-4 w-44 text-center text-sky-700">1차 평가자</th>
+                <th class="border border-slate-300 py-3 px-4 w-56 text-center text-rose-700">2차 평가자</th>
+                <th class="border border-slate-300 py-3 px-4 w-56">해당 평가그룹</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate-700 font-medium">
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td rowspan="1" class="border border-slate-300 py-3 px-4 font-black text-center align-middle border-r border-slate-300 bg-rose-50 text-rose-800">본사 팀장</td>
+                <td class="border border-slate-300 py-3 px-4">수주팀 · 분체팀(1팀, 2팀) · 경영기획팀 · 인사총무팀 · 재경팀</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><span class="text-slate-400">-</span></td>
+                <td rowspan="2" class="border border-slate-300 py-3 px-4 text-center align-middle border-l border-slate-300"><div class="font-bold text-slate-900">대표이사</div><div class="text-[11px] font-black text-indigo-600">100%</div></td>
+                <td rowspan="2" class="border border-slate-300 py-3 px-4 align-middle border-l border-slate-300"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 1</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td rowspan="1" class="border border-slate-300 py-3 px-4 font-black text-center align-middle border-r border-slate-300 bg-rose-50 text-rose-800">본사 팀원</td>
+                <td class="border border-slate-300 py-3 px-4">수주팀 · 분체팀(1팀, 2팀) · 경영기획팀 · 인사총무팀 · 재경팀</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><span class="text-slate-400">-</span></td>
+</tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td rowspan="1" class="border border-slate-300 py-3 px-4 font-black text-center align-middle border-r border-slate-300 bg-amber-50 text-amber-800">공장 팀장</td>
+                <td class="border border-slate-300 py-3 px-4">영업팀 · 관리팀 · 품질팀 · 생산팀(공무팀)<div class="text-[11px] text-slate-500 mt-0.5">※ 부장 직급 공장장 포함</div></td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><span class="text-slate-400">-</span></td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">대표이사</div><div class="text-[11px] font-black text-indigo-600">100%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 2</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td rowspan="4" class="border border-slate-300 py-3 px-4 font-black text-center align-middle border-r border-slate-300 bg-amber-50 text-amber-800">공장 팀원</td>
+                <td class="border border-slate-300 py-3 px-4">영업팀</td>
+                <td class="border border-slate-300 py-3 px-4 text-center" rowspan="3"><div class="font-bold text-slate-900">각 공장장</div><div class="text-[11px] font-black text-indigo-600">40%</div></td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">강윤기 영업본부장</div><div class="text-[11px] font-black text-indigo-600">60%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 6~13</span> <span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 3</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td class="border border-slate-300 py-3 px-4">관리팀</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">이용철 경영기획팀장</div><div class="text-[11px] font-black text-indigo-600">60%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 6~13</span> <span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 5</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td class="border border-slate-300 py-3 px-4">품질팀</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">박희곤 기술연구소장</div><div class="text-[11px] font-black text-indigo-600">60%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 6~13</span> <span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 4</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td class="border border-slate-300 py-3 px-4">생산팀(공무팀)</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><span class="text-slate-400">-</span></td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">각 공장장</div><div class="text-[11px] font-black text-indigo-600">100%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 6~13</span></td></tr>
+              <tr class="border-b border-slate-300 hover:bg-slate-50 transition"><td rowspan="1" class="border border-slate-300 py-3 px-4 font-black text-center align-middle border-r border-slate-300 bg-sky-50 text-sky-800">기술연구소</td>
+                <td class="border border-slate-300 py-3 px-4">기술연구소</td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><span class="text-slate-400">-</span></td>
+                <td class="border border-slate-300 py-3 px-4 text-center"><div class="font-bold text-slate-900">박희곤 기술연구소장</div><div class="text-[11px] font-black text-indigo-600">100%</div></td>
+                <td class="border border-slate-300 py-3 px-4"><span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-100">그룹 4</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="px-6 py-3 text-[11px] text-slate-500 bg-slate-50 border-t border-slate-100">※ 공장 팀원은 공장장 그룹(그룹 6~13, 공장별)과 2차 평가자 그룹에 모두 포함되어 각각 상대평가를 받습니다. 엑셀 업로드 시 이 기준(1차·2차 평가자 열)으로 평가그룹이 자동 배정됩니다.</p>
+      </div>
+
+      <!-- 13개 평가그룹 정의 테이블 (요청: 그룹 | 평가자 | 그룹 범위 | 대상인원) -->
+      <div id="groupSummaryTableSection" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <h3 class="text-sm sm:text-base font-extrabold tracking-tight">평가그룹 및 담당 범위 정의표 (13개 그룹)</h3>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">※ 공장 팀원은 공장장 그룹과 2차 평가자 그룹에 모두 포함</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-20 text-center">그룹</th>
+                <th class="py-3 px-4 w-44 font-black text-slate-900">평가자</th>
+                <th class="py-3 px-6">그룹 범위</th>
+                <th class="py-3 px-4 w-28 text-center">대상인원</th>
+                
+              </tr>
+            </thead>
+            <tbody id="groupSummaryTbody" class="divide-y divide-slate-100 text-slate-700 font-medium">
+              <!-- 동적 생성 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 전체 169명 실제 명부 조회 테이블 (검색 및 필터) -->
+      <div id="rosterSection" class="scroll-mt-32 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-indigo-600" aria-hidden="true">📒</span>
+            <h4 class="text-sm font-bold text-slate-900 whitespace-nowrap">전체 임직원 명부</h4>
+            <span id="filteredBadge" class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold whitespace-nowrap shrink-0">0명</span>
+          </div>
+          <div class="flex flex-wrap lg:flex-nowrap items-center gap-2">
+            <div class="relative">
+              <span class="absolute left-3 top-2.5 text-slate-400 text-xs" aria-hidden="true">🔍</span>
+              <input type="text" id="searchInput" oninput="filterRosterTable()" placeholder="성명, 부서, 직급, 근무지 검색" 
+                class="pl-8 pr-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs w-52 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+            </div>
+            <select id="groupFilterSelect" onchange="filterRosterTable()" class="px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold focus:outline-none">
+              <option value="">전체 평가그룹 보기</option>
+            </select>
+            <select id="targetFilterSelect" onchange="filterRosterTable()" class="px-2.5 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold focus:outline-none">
+              <option value="">전체 대상/제외</option>
+              <option value="대상">평가대상자만</option>
+              <option value="비해당">평가제외자만</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="max-h-96 overflow-y-auto custom-scroll">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-slate-100 text-slate-600 font-bold sticky top-0 z-10 border-b border-slate-200">
+              <tr>
+                <th class="py-2.5 px-3 w-12 text-center">No</th>
+                <th class="py-2.5 px-3">근무</th>
+                <th class="py-2.5 px-3">부서</th>
+                <th class="py-2.5 px-3">직책</th>
+                <th class="py-2.5 px-3">직위</th>
+                <th class="py-2.5 px-3 font-extrabold text-slate-900">성명</th>
+                <th class="py-2.5 px-3">입사일자</th>
+                <th class="py-2.5 px-3 text-center">대상여부</th>
+                <th class="py-2.5 px-3 text-sky-700">1차 평가자</th>
+<th class="py-2.5 px-3 text-rose-700">2차 평가자</th>
+<th class="py-2.5 px-3 bg-indigo-50/50 font-bold text-indigo-950">배정 평가그룹</th>
+              </tr>
+            </thead>
+            <tbody id="rosterTableBody" class="divide-y divide-slate-100 text-slate-700">
+              <!-- 동적 생성 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+  <!-- PAGE 02 -->
+    <section id="page2" class="scroll-mt-32 space-y-6">
+      
+      <div class="border-b-2 border-slate-300 pb-3">
+        <div class="inline-flex items-center gap-1 text-[11px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-2 py-0.5 rounded mb-1">
+          <span aria-hidden="true">📊</span> PAGE 02
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">'26년 인사평가 평가방식 : 상대평가 등급 및 점수</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">처음 보시는 분도 이해할 수 있도록 STEP 1~5 순서로 안내합니다.</p>
+      </div>
+
+      <div class="flex flex-col gap-0.5 pt-2">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-black tracking-wider">STEP 1</span>
+          <h3 class="text-base sm:text-lg font-black text-slate-900">상대평가, 이렇게 진행됩니다</h3>
+        </div>
+        
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-2">
+          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-base"><span aria-hidden="true">👥</span></div>
+          <h4 class="text-sm font-extrabold text-slate-900">같은 그룹끼리 비교합니다</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">평가자별로 나뉜 평가그룹(13개) 안에서 서로를 비교해 등급을 나눕니다. 다른 그룹 사람과는 비교하지 않습니다.</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-2">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-base"><span aria-hidden="true">🎫</span></div>
+          <h4 class="text-sm font-extrabold text-slate-900">등급마다 인원이 정해져 있습니다</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">그룹 인원 × 등급별 비율로 등급당 배정 인원(T.O)이 정해집니다. 정해진 인원을 넘겨서 줄 수는 없습니다.</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-2">
+          <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-base"><span aria-hidden="true">📝</span></div>
+          <h4 class="text-sm font-extrabold text-slate-900">제출 전에 시뮬레이션으로 확인</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">페이지 3에서 미리 등급을 배정해 보고, 확인이 끝나면 서면 평가표로 제출합니다.</p>
+        </div>
+      </div>
+      <div class="bg-amber-50/90 border-l-4 border-amber-500 p-4 rounded-r-2xl text-xs sm:text-sm text-amber-950">
+        <span class="text-amber-600 mr-1" aria-hidden="true">📌</span>
+        그룹마다 인원이 달라서 소수점이 생깁니다. 모든 등급에 같은 반올림을 쓰면 인원이 남거나 모자라 <strong>과다 배정</strong>이 생길 수 있어, 등급마다 다른 방식(STEP 3)을 적용합니다.
+      </div>
+
+      <div class="flex flex-col gap-0.5 pt-2">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-black tracking-wider">STEP 2</span>
+          <h3 class="text-base sm:text-lg font-black text-slate-900">등급 기준표</h3>
+        </div>
+        <p class="text-xs text-slate-500 pl-0.5">S · A · B · C · D는 비율로 인원이 정해지는 할당제이고, E는 필요할 때만 선택 부여합니다.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-300 shadow-sm overflow-hidden">
+        <div class="bg-blue-950 px-6 py-4 flex items-center justify-between text-white">
+          <h3 class="text-sm sm:text-base font-bold flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500 inline-block shadow"></span>
+            등급 비율 기준표
+          </h3>
+          <span class="text-xs text-blue-200">그룹 인원 대비 비율</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-center border-collapse text-xs sm:text-sm">
+<thead>
+<tr class="bg-blue-900 text-white font-bold divide-x divide-blue-800">
+<th class="py-3 px-4 w-28 bg-blue-950">등급</th>
+<th class="py-3 px-4 bg-sky-950 text-sky-200">S</th>
+<th class="py-3 px-4 bg-sky-950 text-sky-200">A</th>
+<th class="py-3 px-4 bg-blue-900">B</th>
+<th class="py-3 px-4 bg-blue-900">C</th>
+<th class="py-3 px-4 bg-blue-900">D</th>
+<th class="py-3 px-4 bg-slate-800">E</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 font-bold">
+<tr class="divide-x divide-slate-200">
+<td class="py-3.5 px-4 bg-slate-100 text-slate-900">비율</td>
+<td colspan="2" class="py-3.5 px-4 bg-amber-50 text-rose-600 font-black text-sm">15% ( 통합 T.O )</td>
+<td class="py-3.5 px-4 bg-amber-50 text-rose-600 font-black text-sm">40%</td>
+<td class="py-3.5 px-4 bg-amber-50 text-rose-600 font-black text-sm">30%</td>
+<td class="py-3.5 px-4 bg-amber-50 text-rose-600 font-black text-sm">15%</td>
+<td rowspan="2" class="py-3.5 px-4 bg-amber-50 text-rose-600 font-black text-sm align-middle">선택<div class="text-[11px] font-medium text-slate-500">(D에서 차감)</div></td>
+</tr>
+<tr class="divide-x divide-slate-200">
+<td class="py-3.5 px-4 bg-slate-100 text-slate-900">소수점</td>
+<td colspan="2" class="py-3.5 px-4 bg-amber-50 text-slate-800">버림</td>
+<td class="py-3.5 px-4 bg-amber-50 text-slate-800">흡수</td>
+<td class="py-3.5 px-4 bg-amber-50 text-slate-800">올림</td>
+<td class="py-3.5 px-4 bg-amber-50 text-slate-800">사사오입</td>
+</tr>
+<tr class="divide-x divide-slate-200">
+<td class="py-3.5 px-4 bg-slate-100 text-slate-900">점수구간</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">286점~300점</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">270점~285점</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">250점~269점</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">230점~249점</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">210점~229점</td>
+<td class="py-3.5 px-3 text-slate-900 whitespace-nowrap">210점 미만 가능</td>
+</tr>
+</tbody>
+</table>
+        </div>
+        <div class="px-6 py-3 text-xs text-slate-600 bg-slate-50 border-t border-slate-200 space-y-1">
+          <p><strong>S와 A는 한 묶음(통합 T.O)</strong>입니다. 예를 들어 인원이 2명이면 S 2명 / A 2명 / S 1명 + A 1명 모두 가능합니다.</p>
+          <p>E 등급은 필요한 경우에만 선택 부여하며, E가 생기면 그만큼 D 인원에서 차감됩니다. (징계 필요 시 등)</p>
+<p><strong>점수구간</strong>은 등급별 평가점수 범위입니다. E 등급은 210점 미만일 때 부여할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-0.5 pt-2">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-black tracking-wider">STEP 3</span>
+          <h3 class="text-base sm:text-lg font-black text-slate-900">소수점은 이렇게 처리합니다</h3>
+        </div>
+        <p class="text-xs text-slate-500 pl-0.5">인원 × 비율이 딱 떨어지지 않을 때, 등급마다 올림/버림 방식이 다릅니다.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-amber-400 text-slate-950">S / A</span>
+            <span class="text-sm font-black text-slate-900">버림 ↓</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed"><strong>가장 높은 등급이라 “넘치지 않게”</strong> 소수점 아래는 모두 버립니다.</p>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-xs text-slate-700">
+            <div class="text-[11px] font-bold text-slate-400 mb-0.5">예) 14명 그룹</div>
+            14명 × 15% = 2.1명
+            <div class="mt-1 font-black text-indigo-700">→ 2명까지 가능</div>
+          </div>
+          <div class="bg-rose-50 border-l-4 border-rose-500 p-2.5 rounded-r-lg text-rose-950 text-[11px] font-semibold"><strong>[예외]</strong> 계산 결과가 0명이어도(소규모 그룹) <strong>최대 1명은 가능</strong>하며, 이 1명은 B에서 차감됩니다.<br>예) 4명 그룹: 4 × 15% = 0.6명 → 버리면 0명이지만 1명 가능</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-blue-700 text-white">B</span>
+            <span class="text-sm font-black text-slate-900">남는 인원</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed"><strong>완충 등급</strong>입니다. 위 등급은 버리고 아래 등급은 올리면서 생긴 차이를 B가 흡수해, 전체 합이 항상 그룹 인원과 딱 맞습니다.</p>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-xs text-slate-700">
+            <div class="text-[11px] font-bold text-slate-400 mb-0.5">예) 14명 그룹</div>
+            14명 − (S/A 2명 + C 5명 + D 2명)
+            <div class="mt-1 font-black text-indigo-700">→ 5명</div>
+          </div>
+          
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-200 text-slate-900">C</span>
+            <span class="text-sm font-black text-slate-900">올림 ↑</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed"><strong>“최소 이만큼은 꼭”</strong> 부여하는 등급이라 소수점이 있으면 무조건 올립니다.</p>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-xs text-slate-700">
+            <div class="text-[11px] font-bold text-slate-400 mb-0.5">예) 14명 그룹</div>
+            14명 × 30% = 4.2명
+            <div class="mt-1 font-black text-indigo-700">→ 최소 5명은 C 부여</div>
+          </div>
+          
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-black bg-orange-200 text-orange-950">D</span>
+            <span class="text-sm font-black text-slate-900">반올림 / 올림</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed"><strong>20명 이하</strong> 그룹은 소수점 첫째 자리가 5 이상이면 올리고 4 이하면 버립니다(사사오입). <strong>21명 이상</strong> 그룹은 소수점이 있으면 올립니다. 이 인원도 최소 부여 인원입니다.</p>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 text-xs text-slate-700">
+            <div class="text-[11px] font-bold text-slate-400 mb-0.5">예) 14명 그룹 (20명 이하)</div>
+            14명 × 15% = 2.1명
+            <div class="mt-1 font-black text-indigo-700">→ 반올림해서 최소 2명은 D 부여</div>
+          </div>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2 text-[11px] text-slate-600">예) 27명 그룹 (21명 이상): 27명 × 15% = 4.05명 → 올림해서 <strong>5명</strong><br>E 등급이 생기면 D 인원에서 차감됩니다.</div>
+        </div>
+      </div>
+
+      <!-- 인원수별 미니 계산기 -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 w-full md:w-1/3">
+          <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-black tracking-wider">STEP 4</span>
+          <h4 class="text-base font-bold text-slate-900">우리 그룹 인원으로 직접 계산해보세요</h4>
+          <p class="text-xs text-slate-500">인원수를 입력하면 위 규칙대로 등급별 인원이 바로 계산됩니다.</p>
+          <div class="flex items-center gap-3 pt-2">
+            <input type="number" id="calcInput" min="1" max="100" value="14" 
+              class="w-24 px-3 py-2 border-2 border-indigo-500 rounded-xl font-black text-center text-lg text-indigo-900 focus:outline-none"
+              oninput="runMiniCalculator(this.value)">
+            <span class="text-sm font-bold text-slate-700">명 기준</span>
+          </div>
+        </div>
+
+        <div id="calcResultContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full md:w-2/3">
+          <!-- 계산 결과 카드 렌더링 -->
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-0.5 pt-2">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white text-[11px] font-black tracking-wider">STEP 5</span>
+          <h3 class="text-base sm:text-lg font-black text-slate-900">인원별 등급 인원표</h3>
+        </div>
+        <p class="text-xs text-slate-500 pl-0.5">우리 그룹 인원이 몇 명인지 찾아서, 등급별 인원을 바로 확인하세요.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-300 shadow-sm overflow-hidden">
+        <div class="px-5 py-3 bg-slate-100 border-b border-slate-200 text-sm font-extrabold text-slate-900">① 5명 ~ 20명 <span class="text-xs font-medium text-slate-500">(D : 반올림)</span></div>
+        <div id="quotaTableSmall" class="overflow-x-auto"></div>
+        <div class="px-5 py-3 bg-slate-100 border-y border-slate-200 text-sm font-extrabold text-slate-900">② 21명 이상 <span class="text-xs font-medium text-slate-500">(D : 올림)</span></div>
+        <div id="quotaTableLarge" class="overflow-x-auto"></div>
+        <p class="px-5 py-3 text-[11px] text-slate-500 bg-slate-50 border-t border-slate-200">※ S/A 인원이 1명에 미달할 경우 최대 1명이 가능하며 B 인원에서 차감됩니다. (표의 S/A 인원은 이미 반영됨)</p>
+      </div>
+
+    </section>
+    <section id="page3" class="scroll-mt-32 space-y-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-slate-300 pb-3 gap-3">
+        <div>
+          <div class="inline-flex items-center gap-1 text-[11px] font-black text-indigo-700 uppercase tracking-widest bg-indigo-100 px-2 py-0.5 rounded mb-1">
+            <span aria-hidden="true">🧮</span> PAGE 03
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">평가자 시뮬레이션</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">평가자 본인의 탭을 클릭하여 본인 그룹의 인원 현황과 등급별 T.O를 확인하고 배정해 볼 수 있습니다.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="resetCurrentGroupSimulation()" class="px-3.5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-bold transition">
+            <span class="mr-1" aria-hidden="true">🔄</span>현재 그룹 초기화
+          </button>
+          <button onclick="exportCurrentSimulationExcel()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
+            <span class="mr-1" aria-hidden="true">📥</span>시뮬레이션 결과 다운로드
+          </button>
+        </div>
+      </div>
+
+      <!-- 1) 평가자 이름 탭 (13개 그룹 탭) -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">
+          <span class="mr-1.5 text-indigo-600" aria-hidden="true">👥</span> 평가자(본인 이름) 그룹 탭 선택
+        </label>
+        <div id="evaluatorGroupTabs" class="flex flex-wrap gap-2">
+          <!-- 동적 탭 버튼 13개 -->
+        </div>
+      </div>
+
+      <!-- 2) 현재 선택된 그룹 요약 & 등급별 배정 가능 인원수(T.O) 보드 -->
+      <div class="bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-md border border-slate-800">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-indigo-900/60 gap-4">
+          <div>
+            <span id="currentGroupBadge" class="text-xs font-bold text-amber-400 uppercase tracking-widest">GROUP 03</span>
+            <h3 id="currentGroupTitleDisplay" class="text-2xl font-black text-white mt-0.5">강윤기 영업본부장</h3>
+            <p id="currentGroupRangeDisplay" class="text-xs text-slate-300 mt-1">그룹 범위: 서인천·천안·화성·당진·공주 공장 영업팀 팀원 (14명)</p>
+          </div>
+          <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl border border-white/10 backdrop-blur">
+            <span class="text-xs text-slate-300 font-medium">평가 대상 총원</span>
+            <span id="currentGroupTotalDisplay" class="text-3xl font-black text-amber-400">14</span>
+            <span class="text-xs text-slate-300 font-bold">명</span>
+          </div>
+        </div>
+
+        <!-- 등급별 T.O 대비 현재 배정 현황 카드 그리드 -->
+        <div class="mt-5">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-bold text-slate-300">등급별 배정 가능 인원(T.O) 대비 현황</h4>
+            <span class="text-xs text-slate-300">배정 진행: <strong id="currentProgressDisplay" class="text-amber-400 font-bold">0</strong> / <span id="currentMaxDisplay">14</span>명</span>
+          </div>
+          <div id="quotaCardsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-slate-900">
+            <!-- 6개 등급 상태 카드 동적 생성 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) 피평가자 명단 및 등급 배정 입력 테이블 -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+          <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <span class="text-indigo-600" aria-hidden="true">📋</span>
+            피평가자 명부 및 등급 부여
+          </h4>
+          <span class="text-xs text-slate-500 font-medium">※ 등급 기준 인원을 초과하여 선택 시 즉각 팝업 안내 후 입력을 제한합니다.</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-12 text-center">No</th>
+                <th class="py-3 px-4">근무지</th>
+                <th class="py-3 px-4">부서</th>
+                <th class="py-3 px-4">직책</th>
+                <th class="py-3 px-4">직위</th>
+                <th class="py-3 px-4 font-black text-slate-900">성명</th>
+                <th class="py-3 px-4 w-52 text-center bg-indigo-50/70 text-indigo-950 font-black">평가등급 부여</th>
+              </tr>
+            </thead>
+            <tbody id="simTargetTableBody" class="divide-y divide-slate-100 text-slate-700 font-medium">
+              <!-- 피평가자 동적 생성 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4) 서면 제출 필수 안내문 (요청 문구 필수 탑재) -->
+      <div class="bg-amber-500/10 border-2 border-amber-500/30 rounded-2xl p-5 text-amber-950 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 text-xl font-bold">
+            <span aria-hidden="true">📝</span>
+          </div>
+          <div>
+            <p class="text-xs sm:text-sm font-extrabold text-amber-950 tracking-tight leading-snug">
+              ※ 위 시뮬레이션은 평가그룹에 따라 평가등급을 부여해 볼 수 있는 참고용 도구입니다.
+            </p>
+            <p class="text-[11px] text-amber-900/80 mt-0.5">이 외 평가와 관련된 세부 상세 내용은 공지사항을 참고해 주시기 바랍니다.</p>
+          </div>
+        </div>
+        <span class="text-xs bg-amber-200/80 text-amber-900 px-3 py-1.5 rounded-lg font-bold shrink-0">문의: 인사총무팀 이소미 과장(070-5015-1815)</span>
+      </div>
+
+    </section>
+</main>
+
+  <!-- 기준 인원 초과 안내 모달 (Alert 대체용) -->
+  <div id="quotaModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-start space-x-4">
+        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 text-2xl font-bold">
+          <span aria-hidden="true">⚠️</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-black text-slate-900" id="quotaModalTitle">등급 기준 인원 초과 안내</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" id="quotaModalBody">
+            해당 등급의 허용 기준 인원을 초과하여 입력할 수 없습니다.
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button onclick="closeQuotaModal()" class="w-full sm:w-auto px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition">
+          확인
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- 푸터 -->
+  <footer class="bg-slate-950 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <span class="font-extrabold text-white text-sm">’26년 인사평가 포털</span>
+        <span>|</span>
+        <span>연말 인사평가 안내</span>
+      </div>
+      <p class="text-center sm:text-right">Copyright © 2026 본사 인사총무팀. All Rights Reserved.</p>
+    </div>
+  </footer>
+<script>
+    /* =========================================================================
+       1. 13개 평가그룹 정의
+       ========================================================================= */
+    const GROUP_DEFINITIONS = [
+      { id: "G1", groupName: "그룹 1", evaluator: "한상태 대표이사", targetRange: "본사/팀장, 본사/팀원", targetCount: 26 },
+      { id: "G2", groupName: "그룹 2", evaluator: "한상태 대표이사", targetRange: "공장/영업·관리·품질·생산팀/팀장 및 부장 직급 공장장", targetCount: 32 },
+      { id: "G3", groupName: "그룹 3", evaluator: "강윤기 영업본부장", targetRange: "공장/영업팀/팀원", targetCount: 14 },
+      { id: "G4", groupName: "그룹 4", evaluator: "박희곤 기술연구소장", targetRange: "공장/품질팀/팀원, 기술연구소/팀원", targetCount: 22 },
+      { id: "G5", groupName: "그룹 5", evaluator: "이용철 경영기획팀장", targetRange: "공장/관리·업무지원팀/팀원", targetCount: 10 },
+      { id: "G6", groupName: "그룹 6", evaluator: "김영호 공장장", targetRange: "공장/전 팀원 (기초서인천)", targetCount: 16 },
+      { id: "G7", groupName: "그룹 7", evaluator: "한상헌 공장장", targetRange: "공장/전 팀원 (에프에이)", targetCount: 9 },
+      { id: "G8", groupName: "그룹 8", evaluator: "김희대 공장장", targetRange: "공장/전 팀원 (기초당진)", targetCount: 17 },
+      { id: "G9", groupName: "그룹 9", evaluator: "김태중 공장장", targetRange: "공장/전 팀원 (서인천)", targetCount: 14 },
+      { id: "G10", groupName: "그룹 10", evaluator: "봉태영 공장장", targetRange: "공장/전 팀원 (천안)", targetCount: 13 },
+      { id: "G11", groupName: "그룹 11", evaluator: "고현일 공장장", targetRange: "공장/전 팀원 (당진)", targetCount: 4 },
+      { id: "G12", groupName: "그룹 12", evaluator: "유대일 공장장", targetRange: "공장/전 팀원 (공주)", targetCount: 8 },
+      { id: "G13", groupName: "그룹 13", evaluator: "김신태 공장장", targetRange: "공장/전 팀원 (화성)", targetCount: 10 }
+    ];
+
+    /* =========================================================================
+       2. 전체 169명 실제 엑셀 원본 임베드 데이터 (누락/더미 없이 100% 실명 반영)
+       ========================================================================= */
+    const EMBEDDED = {at: 1794813700139, name: "26년 인사평가 전체임직원 현황", rows: [{"no":1,"loc":"본사","dept":"영업본부","duty":"본부장","title":"전무","name":"강윤기","inDate":"2014-10-13","isTarget":"비해당","ev1":"","ev2":""},{"no":2,"loc":"본사","dept":"수주팀","duty":"팀장","title":"차장","name":"진광용","inDate":"2014-10-14","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":3,"loc":"본사","dept":"수주팀","duty":"팀원","title":"차장","name":"김종중","inDate":"2022-10-17","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":4,"loc":"본사","dept":"수주팀","duty":"팀원","title":"과장","name":"정민교","inDate":"2016-05-02","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":5,"loc":"본사","dept":"분체사업부문","duty":"부문장","title":"이사","name":"여성욱","inDate":"2010-05-01","isTarget":"비해당","ev1":"","ev2":""},{"no":6,"loc":"본사","dept":"분체1팀","duty":"팀장","title":"부장","name":"오정후","inDate":"2010-01-04","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":7,"loc":"본사","dept":"분체1팀","duty":"팀원","title":"대리","name":"이성민","inDate":"2023-07-10","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":8,"loc":"본사","dept":"분체1팀","duty":"팀원","title":"주임","name":"김경진","inDate":"2026-04-27","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":9,"loc":"본사","dept":"분체1팀","duty":"팀원","title":"주임","name":"전우빈","inDate":"2026-07-01","isTarget":"비해당","ev1":"","ev2":""},{"no":10,"loc":"본사","dept":"분체2팀","duty":"팀장","title":"차장","name":"임중수","inDate":"2016-08-08","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":11,"loc":"본사","dept":"분체2팀","duty":"팀원","title":"과장","name":"이상엽","inDate":"2014-09-23","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":12,"loc":"본사","dept":"분체2팀","duty":"팀원","title":"과장","name":"노승문","inDate":"2022-04-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":13,"loc":"본사","dept":"분체2팀","duty":"팀원","title":"주임","name":"반영혁","inDate":"2024-08-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":14,"loc":"본사","dept":"경영기획팀","duty":"팀장","title":"부장","name":"이용철","inDate":"2016-01-04","isTarget":"비해당","ev1":"","ev2":""},{"no":15,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"과장","name":"하태광","inDate":"2018-03-23","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":16,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"과장","name":"임광진","inDate":"2026-05-18","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":17,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"대리","name":"김지수","inDate":"2023-09-20","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":18,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"대리","name":"장예은","inDate":"2018-02-06","isTarget":"비해당","ev1":"","ev2":""},{"no":19,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"대리","name":"강석구","inDate":"2023-01-02","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":20,"loc":"본사","dept":"경영기획팀","duty":"팀원","title":"주임","name":"김현탁","inDate":"2025-12-08","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":21,"loc":"본사","dept":"인사총무팀","duty":"팀장","title":"부장","name":"정경건","inDate":"2017-01-09","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":22,"loc":"본사","dept":"인사총무팀","duty":"팀원","title":"과장","name":"이소미","inDate":"2023-08-16","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":23,"loc":"본사","dept":"인사총무팀","duty":"팀원","title":"과장","name":"유설미","inDate":"2023-09-08","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":24,"loc":"본사","dept":"인사총무팀","duty":"팀원","title":"대리","name":"한국희","inDate":"2024-12-30","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":25,"loc":"본사","dept":"인사총무팀","duty":"팀원","title":"주임","name":"최진영","inDate":"2023-09-20","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":26,"loc":"본사","dept":"재경팀","duty":"팀장","title":"차장","name":"정다운","inDate":"2019-03-18","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":27,"loc":"본사","dept":"재경팀","duty":"팀원","title":"과장","name":"노채란","inDate":"2017-03-21","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":28,"loc":"본사","dept":"재경팀","duty":"팀원","title":"과장","name":"김현호","inDate":"2018-03-15","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":29,"loc":"본사","dept":"재경팀","duty":"팀원","title":"대리","name":"김경립","inDate":"2020-03-09","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":30,"loc":"본사","dept":"재경팀","duty":"팀원","title":"대리","name":"윤보람","inDate":"2022-12-26","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":31,"loc":"본사","dept":"재경팀","duty":"팀원","title":"대리","name":"최윤희","inDate":"2022-12-26","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":32,"loc":"기술연구소","dept":"기술연구소","duty":"소장","title":"이사","name":"박희곤","inDate":"2026-03-09","isTarget":"비해당","ev1":"","ev2":""},{"no":33,"loc":"기술연구소","dept":"기술연구소","duty":"팀원","title":"부장","name":"박원우","inDate":"2016-04-22","isTarget":"대상","ev1":"","ev2":"박희곤(기술연구소장)"},{"no":34,"loc":"기술연구소","dept":"기술연구소","duty":"팀원","title":"부장","name":"손병길","inDate":"2016-06-13","isTarget":"대상","ev1":"","ev2":"박희곤(기술연구소장)"},{"no":35,"loc":"기술연구소","dept":"기술연구소","duty":"팀원","title":"주임","name":"원민희","inDate":"2026-03-03","isTarget":"대상","ev1":"","ev2":"박희곤(기술연구소장)"},{"no":36,"loc":"기초서인천","dept":"공장총괄","duty":"공장장","title":"상무","name":"김영호","inDate":"2016-04-22","isTarget":"비해당","ev1":"","ev2":""},{"no":37,"loc":"기초서인천","dept":"업무지원팀","duty":"팀장","title":"과장","name":"한덕희","inDate":"2024-12-27","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":38,"loc":"기초서인천","dept":"업무지원팀","duty":"팀원","title":"과장","name":"김재한","inDate":"2026-03-23","isTarget":"대상","ev1":"김영호(공장장)","ev2":"이용철 경영기획팀장"},{"no":39,"loc":"기초서인천","dept":"업무지원팀","duty":"팀원","title":"주임","name":"이예지","inDate":"2026-05-18","isTarget":"대상","ev1":"김영호(공장장)","ev2":"이용철 경영기획팀장"},{"no":40,"loc":"기초서인천","dept":"품질연구팀","duty":"팀장","title":"차장","name":"김정호","inDate":"2009-07-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":41,"loc":"기초서인천","dept":"품질연구팀","duty":"팀원","title":"주임","name":"한진영","inDate":"2024-12-02","isTarget":"대상","ev1":"김영호(공장장)","ev2":"박희곤(기술연구소장)"},{"no":42,"loc":"기초서인천","dept":"공무팀","duty":"팀장","title":"책임기사","name":"장사익","inDate":"2015-09-14","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":43,"loc":"기초서인천","dept":"공무팀","duty":"팀원","title":"선임기사","name":"이현진","inDate":"2024-12-02","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":44,"loc":"기초서인천","dept":"공무팀","duty":"팀원","title":"선임기사","name":"황용","inDate":"2024-02-19","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":45,"loc":"기초서인천","dept":"생산기술팀","duty":"팀장","title":"책임기사","name":"정찬일","inDate":"2014-07-28","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":46,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"책임기사","name":"황명환","inDate":"2016-06-07","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":47,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"김우영","inDate":"2025-12-15","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":48,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"최진혁","inDate":"2026-03-03","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":49,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"강순종","inDate":"2021-10-20","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":50,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"김봉규","inDate":"2025-07-01","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":51,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"홍성욱","inDate":"2026-11-11","isTarget":"비해당","ev1":"-","ev2":""},{"no":52,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"김광수","inDate":"2025-12-01","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":53,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"이성호","inDate":"2026-07-13","isTarget":"비해당","ev1":"","ev2":""},{"no":54,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"한효상","inDate":"2025-03-25","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":55,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"양영수","inDate":"2026-05-26","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":56,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"최재승","inDate":"2026-11-16","isTarget":"비해당","ev1":"-","ev2":""},{"no":57,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"김지성","inDate":"2026-03-03","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":58,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"김준형","inDate":"2026-06-08","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":59,"loc":"기초서인천","dept":"생산기술팀","duty":"팀원","title":"기사","name":"이현우","inDate":"2026-03-03","isTarget":"대상","ev1":"김영호(공장장)","ev2":""},{"no":60,"loc":"기초당진","dept":"공장총괄","duty":"공장장","title":"이사","name":"김희대","inDate":"2020-01-09","isTarget":"비해당","ev1":"","ev2":""},{"no":61,"loc":"기초당진","dept":"업무지원팀","duty":"팀장","title":"부장","name":"곽승호","inDate":"2009-04-01","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":62,"loc":"기초당진","dept":"업무지원팀","duty":"팀원","title":"과장","name":"류해성","inDate":"2026-08-24","isTarget":"비해당","ev1":"","ev2":""},{"no":63,"loc":"기초당진","dept":"업무지원팀","duty":"팀원","title":"대리","name":"임배남","inDate":"2016-06-27","isTarget":"대상","ev1":"김희대(공장장)","ev2":"이용철 경영기획팀장"},{"no":64,"loc":"기초당진","dept":"품질연구팀","duty":"팀장","title":"차장","name":"박병호","inDate":"2011-02-17","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":65,"loc":"기초당진","dept":"품질연구팀","duty":"팀원","title":"사원","name":"이정헌","inDate":"2025-03-04","isTarget":"대상","ev1":"김희대(공장장)","ev2":"박희곤(기술연구소장)"},{"no":66,"loc":"기초당진","dept":"공무팀","duty":"팀장","title":"수석기사","name":"신승철","inDate":"2011-02-16","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":67,"loc":"기초당진","dept":"공무팀","duty":"팀원","title":"선임기사","name":"김재홍","inDate":"2014-01-16","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":68,"loc":"기초당진","dept":"공무팀","duty":"팀원","title":"기사","name":"김원종","inDate":"2025-12-15","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":69,"loc":"기초당진","dept":"공무팀","duty":"팀원","title":"기사","name":"박기범","inDate":"2026-07-01","isTarget":"비해당","ev1":"","ev2":""},{"no":70,"loc":"기초당진","dept":"생산기술팀","duty":"팀장","title":"책임기사","name":"차병주","inDate":"2009-11-02","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":71,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"책임기사","name":"이연학","inDate":"2014-10-10","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":72,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"책임기사","name":"고용수","inDate":"2025-04-28","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":73,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"노두선","inDate":"2011-02-16","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":74,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"손완영","inDate":"2014-01-02","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":75,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"이성진","inDate":"2025-12-01","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":76,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"선임기사","name":"인민교","inDate":"2023-04-26","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":77,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"김한국","inDate":"2024-12-02","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":78,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"김부광","inDate":"2025-03-25","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":79,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"주임기사","name":"윤경수","inDate":"2026-01-19","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":80,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"기사","name":"강선공","inDate":"2025-04-07","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":81,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"기사","name":"임태우","inDate":"2021-10-21","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":82,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"기사","name":"김동길","inDate":"2023-09-04","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":83,"loc":"기초당진","dept":"생산기술팀","duty":"팀원","title":"기사","name":"진시후","inDate":"2026-03-03","isTarget":"대상","ev1":"김희대(공장장)","ev2":""},{"no":84,"loc":"에프에이","dept":"공장총괄","duty":"공장장","title":"상무","name":"한상헌","inDate":"2004-09-01","isTarget":"비해당","ev1":"","ev2":""},{"no":85,"loc":"에프에이","dept":"관리팀","duty":"팀장","title":"차장","name":"장문광","inDate":"2022-05-09","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":86,"loc":"에프에이","dept":"관리팀","duty":"팀원","title":"대리","name":"황혜란","inDate":"2026-04-27","isTarget":"대상","ev1":"한상헌(공장장)","ev2":"이용철 경영기획팀장"},{"no":87,"loc":"에프에이","dept":"관리팀","duty":"팀원","title":"주임","name":"백대현","inDate":"2025-01-06","isTarget":"대상","ev1":"한상헌(공장장)","ev2":"이용철 경영기획팀장"},{"no":88,"loc":"에프에이","dept":"품질팀","duty":"팀장","title":"과장","name":"허진환","inDate":"2020-01-06","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":89,"loc":"에프에이","dept":"품질팀","duty":"팀원","title":"사원","name":"정상빈","inDate":"2025-03-04","isTarget":"대상","ev1":"한상헌(공장장)","ev2":"박희곤(기술연구소장)"},{"no":90,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"선임기사","name":"최명일","inDate":"2011-11-21","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":91,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"선임기사","name":"안동혁","inDate":"2021-04-01","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":92,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"선임기사","name":"임종민","inDate":"2011-08-16","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":93,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"선임기사","name":"이태근","inDate":"2013-11-14","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":94,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"주임기사","name":"노태수","inDate":"2022-06-02","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":95,"loc":"에프에이","dept":"생산팀","duty":"팀원","title":"기사","name":"최동현","inDate":"2026-05-04","isTarget":"대상","ev1":"한상헌(공장장)","ev2":""},{"no":96,"loc":"서인천","dept":"공장총괄","duty":"공장장","title":"이사","name":"김태중","inDate":"2016-06-09","isTarget":"비해당","ev1":"","ev2":""},{"no":97,"loc":"서인천","dept":"관리팀","duty":"팀장","title":"차장","name":"김태철","inDate":"2016-07-05","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":98,"loc":"서인천","dept":"관리팀","duty":"팀원","title":"대리","name":"이희자","inDate":"2016-08-22","isTarget":"대상","ev1":"김태중(공장장)","ev2":"이용철 경영기획팀장"},{"no":99,"loc":"서인천","dept":"영업팀","duty":"팀장","title":"차장","name":"정연상","inDate":"2016-08-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":100,"loc":"서인천","dept":"영업팀","duty":"팀원","title":"과장","name":"김근우","inDate":"2017-01-02","isTarget":"대상","ev1":"김태중(공장장)","ev2":"강윤기(영업본부장)"},{"no":101,"loc":"서인천","dept":"영업팀","duty":"팀원","title":"대리","name":"강다윗","inDate":"2025-05-08","isTarget":"대상","ev1":"김태중(공장장)","ev2":"강윤기(영업본부장)"},{"no":102,"loc":"서인천","dept":"영업팀","duty":"팀원","title":"대리","name":"이두송","inDate":"2022-10-17","isTarget":"대상","ev1":"김태중(공장장)","ev2":"강윤기(영업본부장)"},{"no":103,"loc":"서인천","dept":"영업팀","duty":"팀원","title":"주임","name":"진성철","inDate":"2023-09-13","isTarget":"대상","ev1":"김태중(공장장)","ev2":"강윤기(영업본부장)"},{"no":104,"loc":"서인천","dept":"품질팀","duty":"팀장","title":"차장","name":"이준원","inDate":"2016-04-22","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":105,"loc":"서인천","dept":"품질팀","duty":"팀원","title":"차장","name":"이종칠","inDate":"2020-08-31","isTarget":"대상","ev1":"김태중(공장장)","ev2":"박희곤(기술연구소장)"},{"no":106,"loc":"서인천","dept":"품질팀","duty":"팀원","title":"대리","name":"장민기","inDate":"2021-01-21","isTarget":"대상","ev1":"김태중(공장장)","ev2":"박희곤(기술연구소장)"},{"no":107,"loc":"서인천","dept":"품질팀","duty":"팀원","title":"대리","name":"장주필","inDate":"2022-05-23","isTarget":"대상","ev1":"김태중(공장장)","ev2":"박희곤(기술연구소장)"},{"no":108,"loc":"서인천","dept":"품질팀","duty":"팀원","title":"주임","name":"민동찬","inDate":"2022-11-01","isTarget":"대상","ev1":"김태중(공장장)","ev2":"박희곤(기술연구소장)"},{"no":109,"loc":"서인천","dept":"품질팀","duty":"팀원","title":"사원","name":"임유빈","inDate":"2026-03-03","isTarget":"대상","ev1":"김태중(공장장)","ev2":"박희곤(기술연구소장)"},{"no":110,"loc":"서인천","dept":"생산팀","duty":"팀장","title":"책임기사","name":"조인철","inDate":"2016-08-08","isTarget":"비해당","ev1":"-","ev2":""},{"no":111,"loc":"서인천","dept":"생산팀","duty":"팀원","title":"선임기사","name":"이성묵","inDate":"2021-07-01","isTarget":"대상","ev1":"김태중(공장장)","ev2":""},{"no":112,"loc":"서인천","dept":"생산팀","duty":"팀원","title":"선임기사","name":"황중익","inDate":"2016-11-01","isTarget":"대상","ev1":"김태중(공장장)","ev2":""},{"no":113,"loc":"서인천","dept":"생산팀","duty":"팀원","title":"선임기사","name":"조풍연","inDate":"2019-09-02","isTarget":"대상","ev1":"김태중(공장장)","ev2":""},{"no":114,"loc":"서인천","dept":"생산팀","duty":"팀원","title":"주임기사","name":"고범서","inDate":"2023-11-16","isTarget":"대상","ev1":"김태중(공장장)","ev2":""},{"no":115,"loc":"서인천","dept":"생산팀","duty":"팀원","title":"주임기사","name":"박성진","inDate":"2026-11-02","isTarget":"비해당","ev1":"-","ev2":""},{"no":116,"loc":"천안","dept":"공장총괄","duty":"공장장","title":"부장","name":"봉태영","inDate":"2018-02-06","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":117,"loc":"천안","dept":"관리팀","duty":"팀장","title":"과장","name":"민진화","inDate":"2014-10-29","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":118,"loc":"천안","dept":"관리팀","duty":"팀원","title":"주임","name":"정현미","inDate":"2025-06-09","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"이용철 경영기획팀장"},{"no":119,"loc":"천안","dept":"영업팀","duty":"팀장","title":"차장","name":"김윤복","inDate":"2016-08-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":120,"loc":"천안","dept":"영업팀","duty":"팀원","title":"과장","name":"임진묵","inDate":"2024-04-01","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"강윤기(영업본부장)"},{"no":121,"loc":"천안","dept":"영업팀","duty":"팀원","title":"대리","name":"조경일","inDate":"2023-02-13","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"강윤기(영업본부장)"},{"no":122,"loc":"천안","dept":"영업팀","duty":"팀원","title":"대리","name":"송유준","inDate":"2024-03-11","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"강윤기(영업본부장)"},{"no":123,"loc":"천안","dept":"영업팀","duty":"팀원","title":"사원","name":"유재훈","inDate":"2025-08-04","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"강윤기(영업본부장)"},{"no":124,"loc":"천안","dept":"품질팀","duty":"팀장","title":"부장","name":"전재현","inDate":"2014-09-01","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":125,"loc":"천안","dept":"품질팀","duty":"팀원","title":"과장","name":"정성제","inDate":"2017-07-24","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"박희곤(기술연구소장)"},{"no":126,"loc":"천안","dept":"품질팀","duty":"팀원","title":"대리","name":"손지우","inDate":"2023-08-16","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"박희곤(기술연구소장)"},{"no":127,"loc":"천안","dept":"품질팀","duty":"팀원","title":"대리","name":"최광현","inDate":"2023-08-01","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"박희곤(기술연구소장)"},{"no":128,"loc":"천안","dept":"품질팀","duty":"팀원","title":"사원","name":"염한서","inDate":"2026-06-01","isTarget":"대상","ev1":"봉태영(공장장)","ev2":"박희곤(기술연구소장)"},{"no":129,"loc":"천안","dept":"생산팀","duty":"팀장","title":"책임기사","name":"서승운","inDate":"2014-06-23","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":130,"loc":"천안","dept":"생산팀","duty":"팀원","title":"선임기사","name":"최재흥","inDate":"2015-04-28","isTarget":"대상","ev1":"봉태영(공장장)","ev2":""},{"no":131,"loc":"천안","dept":"생산팀","duty":"팀원","title":"선임기사","name":"김영수","inDate":"2016-04-22","isTarget":"대상","ev1":"봉태영(공장장)","ev2":""},{"no":132,"loc":"천안","dept":"생산팀","duty":"팀원","title":"선임기사","name":"유자영","inDate":"2016-04-22","isTarget":"대상","ev1":"봉태영(공장장)","ev2":""},{"no":133,"loc":"천안","dept":"생산팀","duty":"팀원","title":"기사","name":"윤희남","inDate":"2023-01-02","isTarget":"대상","ev1":"봉태영(공장장)","ev2":""},{"no":134,"loc":"화성","dept":"공장총괄","duty":"공장장","title":"이사","name":"김신태","inDate":"2026-01-14","isTarget":"비해당","ev1":"","ev2":""},{"no":135,"loc":"화성","dept":"관리팀","duty":"팀장","title":"대리","name":"허현우","inDate":"2021-06-21","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":136,"loc":"화성","dept":"관리팀","duty":"팀원","title":"주임","name":"고명기","inDate":"2026-03-16","isTarget":"대상","ev1":"김신태(공장장)","ev2":"이용철 경영기획팀장"},{"no":137,"loc":"화성","dept":"영업팀","duty":"팀장","title":"차장","name":"심태용","inDate":"2026-02-09","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":138,"loc":"화성","dept":"영업팀","duty":"팀원","title":"차장","name":"김대정","inDate":"2026-03-03","isTarget":"대상","ev1":"김신태(공장장)","ev2":"강윤기(영업본부장)"},{"no":139,"loc":"화성","dept":"영업팀","duty":"팀원","title":"과장","name":"정원일","inDate":"2026-02-09","isTarget":"대상","ev1":"김신태(공장장)","ev2":"강윤기(영업본부장)"},{"no":140,"loc":"화성","dept":"영업팀","duty":"팀원","title":"대리","name":"박진호","inDate":"2026-04-01","isTarget":"대상","ev1":"김신태(공장장)","ev2":"강윤기(영업본부장)"},{"no":141,"loc":"화성","dept":"품질팀","duty":"팀장","title":"차장","name":"최병일","inDate":"2017-07-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":142,"loc":"화성","dept":"품질팀","duty":"팀원","title":"과장","name":"황석","inDate":"2026-03-03","isTarget":"대상","ev1":"김신태(공장장)","ev2":"박희곤(기술연구소장)"},{"no":143,"loc":"화성","dept":"품질팀","duty":"팀원","title":"대리","name":"안태용","inDate":"2026-03-03","isTarget":"대상","ev1":"김신태(공장장)","ev2":"박희곤(기술연구소장)"},{"no":144,"loc":"화성","dept":"품질팀","duty":"팀원","title":"주임","name":"김상민","inDate":"2026-05-06","isTarget":"대상","ev1":"김신태(공장장)","ev2":"박희곤(기술연구소장)"},{"no":145,"loc":"화성","dept":"생산팀","duty":"팀장","title":"책임기사","name":"양유철","inDate":"2026-03-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":146,"loc":"화성","dept":"생산팀","duty":"팀원","title":"선임기사","name":"한재기","inDate":"2026-03-01","isTarget":"대상","ev1":"김신태(공장장)","ev2":""},{"no":147,"loc":"화성","dept":"생산팀","duty":"팀원","title":"선임기사","name":"이경호","inDate":"2026-03-01","isTarget":"대상","ev1":"김신태(공장장)","ev2":""},{"no":148,"loc":"화성","dept":"생산팀","duty":"팀원","title":"주임기사","name":"유호범","inDate":"2026-03-03","isTarget":"대상","ev1":"김신태(공장장)","ev2":""},{"no":149,"loc":"당진","dept":"공장총괄","duty":"공장장","title":"부장","name":"고현일","inDate":"2017-05-12","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":150,"loc":"당진","dept":"관리팀","duty":"팀장","title":"차장","name":"김태훈","inDate":"2008-05-01","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":151,"loc":"당진","dept":"관리팀","duty":"팀원","title":"과장","name":"조지선","inDate":"2013-03-06","isTarget":"대상","ev1":"고현일(공장장)","ev2":"이용철 경영기획팀장"},{"no":152,"loc":"당진","dept":"영업팀","duty":"팀장","title":"차장","name":"백인기","inDate":"2016-04-22","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":153,"loc":"당진","dept":"영업팀","duty":"팀원","title":"대리","name":"임영범","inDate":"2016-07-19","isTarget":"대상","ev1":"고현일(공장장)","ev2":"강윤기(영업본부장)"},{"no":154,"loc":"당진","dept":"품질팀","duty":"팀장","title":"차장","name":"김진채","inDate":"2014-11-25","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":155,"loc":"당진","dept":"품질팀","duty":"팀원","title":"주임","name":"차유환","inDate":"2024-02-02","isTarget":"대상","ev1":"고현일(공장장)","ev2":"박희곤(기술연구소장)"},{"no":156,"loc":"당진","dept":"품질팀","duty":"팀원","title":"주임","name":"최호준","inDate":"2026-07-01","isTarget":"비해당","ev1":"","ev2":""},{"no":157,"loc":"당진","dept":"생산팀","duty":"팀장","title":"선임기사","name":"김진태","inDate":"2014-09-18","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":158,"loc":"당진","dept":"생산팀","duty":"팀원","title":"선임기사","name":"명노철","inDate":"2015-02-02","isTarget":"대상","ev1":"고현일(공장장)","ev2":""},{"no":159,"loc":"당진","dept":"생산팀","duty":"팀원","title":"주임기사","name":"문권좌","inDate":"2026-09-01","isTarget":"비해당","ev1":"","ev2":""},{"no":160,"loc":"공주","dept":"공장총괄","duty":"공장장","title":"부장","name":"유대일","inDate":"2015-11-01","isTarget":"대상","ev1":"","ev2":"한상태 사장님"},{"no":161,"loc":"공주","dept":"관리팀","duty":"팀장","title":"차장","name":"김영국","inDate":"2005-10-21","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":162,"loc":"공주","dept":"관리팀","duty":"팀원","title":"대리","name":"조은실","inDate":"2016-11-03","isTarget":"대상","ev1":"유대일(공장장)","ev2":"이용철 경영기획팀장"},{"no":163,"loc":"공주","dept":"영업팀","duty":"팀장","title":"차장","name":"강성훈","inDate":"2016-04-22","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":164,"loc":"공주","dept":"영업팀","duty":"팀원","title":"과장","name":"장영훈","inDate":"2018-06-25","isTarget":"대상","ev1":"유대일(공장장)","ev2":"강윤기(영업본부장)"},{"no":165,"loc":"공주","dept":"영업팀","duty":"팀원","title":"대리","name":"정영호","inDate":"2022-02-07","isTarget":"대상","ev1":"유대일(공장장)","ev2":"강윤기(영업본부장)"},{"no":166,"loc":"공주","dept":"품질팀","duty":"팀장","title":"차장","name":"박준범","inDate":"2022-10-25","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":167,"loc":"공주","dept":"품질팀","duty":"팀원","title":"과장","name":"백용훈","inDate":"2016-04-22","isTarget":"대상","ev1":"유대일(공장장)","ev2":"박희곤(기술연구소장)"},{"no":168,"loc":"공주","dept":"품질팀","duty":"팀원","title":"대리","name":"김영빈","inDate":"2021-11-29","isTarget":"대상","ev1":"유대일(공장장)","ev2":"박희곤(기술연구소장)"},{"no":169,"loc":"공주","dept":"품질팀","duty":"팀원","title":"사원","name":"남정호","inDate":"2026-03-03","isTarget":"대상","ev1":"유대일(공장장)","ev2":"박희곤(기술연구소장)"},{"no":170,"loc":"공주","dept":"생산팀","duty":"팀장","title":"책임기사","name":"강석열","inDate":"2016-04-22","isTarget":"대상","ev1":"-","ev2":"한상태 사장님"},{"no":171,"loc":"공주","dept":"생산팀","duty":"팀원","title":"선임기사","name":"백무열","inDate":"2022-12-05","isTarget":"대상","ev1":"유대일(공장장)","ev2":""},{"no":172,"loc":"공주","dept":"생산팀","duty":"팀원","title":"선임기사","name":"최정만","inDate":"2022-09-01","isTarget":"대상","ev1":"유대일(공장장)","ev2":""}]};
+    const RAW_ROSTER = [];
+
+    /* =========================================================================
+       2-1. 평가자 열(1차/2차) 기반 평가그룹 자동 배정 규칙
+       - 1차·2차 평가자 이름을 GROUP_DEFINITIONS의 평가자와 매칭해 그룹을 부여 (복수 그룹 가능)
+       - 평가자가 여러 그룹을 맡는 경우(한상태 대표: 그룹1/그룹2)는 근무지가 '본사'면 앞 그룹, 아니면 뒤 그룹
+       - 대상자여부가 '대상'이 아니면 그룹 없이 '제외(...)' 표기
+       ========================================================================= */
+    const HQ_LOC = '본사';
+    const LATE_HIRE_FROM = '2026-07-01';
+    const EXCLUDED_TITLES = ['부장', '수석기사', '이사', '상무', '전무'];
+
+    function evalName(raw) {
+      const v = String(raw ?? '').trim();
+      if (!v || v === '-') return '';
+      return v.split(/[\s(（]/)[0];
+    }
+    const EVALUATOR_MAP = (function () {
+      const m = {};
+      GROUP_DEFINITIONS.forEach(g => { const n = evalName(g.evaluator); (m[n] = m[n] || []).push(g.id); });
+      return m;
+    })();
+
+    function excludeLabel(r) {
+      if (r.inDate >= LATE_HIRE_FROM) return "제외('26하반기)";
+      return EXCLUDED_TITLES.includes(r.title) ? `제외(${r.title})` : '제외';
+    }
+
+    // 반환: 그룹ID 배열 (비해당이면 ['제외(...)'], 배정 불가 대상자는 [])
+    function assignGroups(r, unknownEvaluators) {
+      if (r.isTarget !== '대상') return [excludeLabel(r)];
+      const ids = [];
+      [r.ev1, r.ev2].forEach(raw => {
+        const n = evalName(raw);
+        if (!n) return;
+        const cand = EVALUATOR_MAP[n];
+        if (!cand) { if (unknownEvaluators) unknownEvaluators.add(n); return; }
+        const gid = cand.length > 1 ? (r.loc === HQ_LOC ? cand[0] : cand[cand.length - 1]) : cand[0];
+        if (!ids.includes(gid)) ids.push(gid);
+      });
+      return ids;
+    }
+
+    /* =========================================================================
+       2-2. 엑셀 행 → 명부 변환 (헤더 정규화 / 날짜 변환 / 검증)
+*/
+const DEFAULT_ROSTER=[];
+let isAdminActive=false;
+let simulationGrades = {};
+    let activeGroupId = "G3";
+    function renderGroupTabs() {
+      const container = document.getElementById("evaluatorGroupTabs");
+      container.innerHTML = GROUP_DEFINITIONS.map(g => {
+        const isCurrent = g.id === activeGroupId;
+        // 그룹 대상자 수 (중복 포함)
+        const count = RAW_ROSTER.filter(r => r.groups.includes(g.id) && r.isTarget === "대상").length || g.targetCount;
+        return `
+          <button onclick="onSelectGroupTab('${g.id}')"
+            class="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+              isCurrent 
+                ? 'bg-indigo-600 text-white shadow-md ring-2 ring-indigo-600 ring-offset-1' 
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+            }">
+            <span>${g.groupName}</span>
+            <span class="text-[11px] opacity-90 font-medium">(${g.evaluator})</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded-full ${isCurrent ? 'bg-indigo-900 text-indigo-100' : 'bg-slate-200 text-slate-600'}">
+              ${count}명
+            </span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function onSelectGroupTab(groupId) {
+      activeGroupId = groupId;
+      renderGroupTabs();
+      renderSimulationBoard();
+    }
+
+    // 3페이지 시뮬레이션 보드 & 피평가자 명부 렌더링
+    function renderSimulationBoard() {
+      const groupDef = GROUP_DEFINITIONS.find(g => g.id === activeGroupId) || GROUP_DEFINITIONS[2];
+      const targets = RAW_ROSTER.filter(r => r.groups.includes(groupDef.id) && r.isTarget === "대상");
+      const totalCount = targets.length || groupDef.targetCount;
+      const quota = calculateQuota(totalCount);
+
+      // 상단 정보 갱신
+      document.getElementById("currentGroupBadge").innerText = `${groupDef.groupName} EVALUATION`;
+      document.getElementById("currentGroupTitleDisplay").innerText = `${groupDef.evaluator} [${groupDef.groupName}]`;
+      document.getElementById("currentGroupRangeDisplay").innerText = `그룹 범위: ${groupDef.targetRange}`;
+      document.getElementById("currentGroupTotalDisplay").innerText = totalCount;
+      document.getElementById("currentMaxDisplay").innerText = totalCount;
+
+      // 현재 배정 등급 집계 (해당 그룹 전용 키 사용)
+      const counts = { 'S': 0, 'A+': 0, 'A-': 0, 'B': 0, 'C': 0, 'D': 0 };
+      let assignedCount = 0;
+      targets.forEach(t => {
+        const key = `${groupDef.id}_${t.no}`;
+        const g = simulationGrades[key];
+        if (g && counts[g] !== undefined) {
+          counts[g]++;
+          assignedCount++;
+        }
+      });
+      document.getElementById("currentProgressDisplay").innerText = assignedCount;
+
+      const saAssigned = counts['S'] + counts['A+'];
+      const penalty = counts['D'];                                   // D 부여 시 C 인원에서 차감
+      const effectiveC = Math.max(0, quota.c - penalty);
+
+      // 6개 T.O 카드 렌더링
+      const cardsGrid = document.getElementById("quotaCardsGrid");
+      cardsGrid.innerHTML = `
+        <!-- S / A+ 통합 -->
+        <div class="p-3.5 rounded-xl border ${saAssigned > quota.saMax ? 'bg-rose-50 border-rose-400' : 'bg-white border-slate-200'} shadow-sm">
+          <div class="flex items-center justify-between text-xs font-bold text-amber-800">
+            <span>S / A 통합</span>
+            <span class="text-[10px] bg-amber-100 px-1.5 py-0.5 rounded font-black">15%</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-black ${saAssigned > quota.saMax ? 'text-rose-600' : 'text-slate-900'}">${saAssigned}</span>
+            <span class="text-sm font-black text-indigo-800 bg-indigo-100 border border-indigo-300 px-2.5 py-1 rounded-lg shadow-sm">최대 ${quota.saMax}명</span>
+          </div>
+          <div class="text-[10px] text-slate-500 mt-1 flex justify-between font-semibold">
+            <span>S: ${counts['S']}</span>
+            <span>A: ${counts['A+']}</span>
+          </div>
+          ${quota.isMinAdjusted ? '<p class="text-[10px] text-rose-600 font-bold mt-1">1명 미달 단서보정</p>' : ''}
+        </div>
+
+        <!-- A- 등급 -->
+        <div class="p-3.5 rounded-xl border ${counts['A-'] > quota.aMinus ? 'bg-rose-50 border-rose-400' : 'bg-white border-slate-200'} shadow-sm">
+          <div class="flex items-center justify-between text-xs font-bold text-blue-800">
+            <span>B 등급</span>
+            <span class="text-[10px] bg-blue-100 px-1.5 py-0.5 rounded font-black">40% 흡수</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-black ${counts['A-'] > quota.aMinus ? 'text-rose-600' : 'text-slate-900'}">${counts['A-']}</span>
+            <span class="text-sm font-black text-indigo-800 bg-indigo-100 border border-indigo-300 px-2.5 py-1 rounded-lg shadow-sm">정원 ${quota.aMinus}명</span>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">인원 조정 단계</p>
+        </div>
+
+        <!-- B 등급 -->
+        <div class="p-3.5 rounded-xl border bg-white border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-800">
+            <span>C 등급</span>
+            <span class="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded font-black">30%</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-black text-slate-900">${counts['B']}</span>
+            <span class="text-sm font-black text-indigo-800 bg-indigo-100 border border-indigo-300 px-2.5 py-1 rounded-lg shadow-sm">최소 ${quota.b}명</span>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">올림 하한 적용</p>
+        </div>
+
+        <!-- C 등급 -->
+        <div class="p-3.5 rounded-xl border bg-white border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs font-bold text-orange-900">
+            <span>D 등급</span>
+            <span class="text-[10px] bg-orange-100 px-1.5 py-0.5 rounded font-black">15%</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-black text-slate-900">${counts['C']}</span>
+            <span class="text-sm font-black text-indigo-800 bg-indigo-100 border border-indigo-300 px-2.5 py-1 rounded-lg shadow-sm">최소 ${effectiveC}명</span>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">${penalty > 0 ? `E ${penalty}명 차감` : (totalCount >= C_CEIL_FROM ? '올림 하한 적용' : '반올림 하한 적용')}</p>
+        </div>
+
+        <!-- D 등급 -->
+        <div class="p-3.5 rounded-xl border bg-white border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs font-bold text-rose-900">
+            <span>E 등급</span>
+            <span class="text-[10px] bg-rose-100 px-1.5 py-0.5 rounded font-bold">선택</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between">
+            <span class="text-2xl font-black text-slate-900">${counts['D']}</span>
+            <span class="text-xs text-slate-400">선택 부여</span>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">D 에서 차감</p>
+        </div>
+      `;
+
+      // 시뮬레이션 피평가자 명부 렌더링
+      const simTbody = document.getElementById("simTargetTableBody");
+      if (targets.length === 0) {
+        simTbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-400">배정된 평가 대상자가 없습니다.</td></tr>`;
+        return;
+      }
+
+      simTbody.innerHTML = targets.map((t, idx) => {
+        const key = `${groupDef.id}_${t.no}`;
+        const currentGrade = simulationGrades[key] || "";
+        return `
+          <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+            <td class="py-3 px-4 text-center font-mono text-slate-400 text-xs">${idx + 1}</td>
+            <td class="py-3 px-4 text-slate-600 font-medium">${t.loc}</td>
+            <td class="py-3 px-4 text-slate-600 font-medium">${t.dept}</td>
+            <td class="py-3 px-4 text-slate-600">${t.duty}</td>
+            <td class="py-3 px-4 font-semibold text-slate-700">${t.title}</td>
+            <td class="py-3 px-4 font-black text-slate-900">${t.name}</td>
+            <td class="py-3 px-4 text-center bg-indigo-50/30">
+              <select onchange="onGradeSelect(${t.no}, this.value, '${currentGrade}')"
+                class="w-full max-w-[170px] px-3 py-1.5 text-xs font-bold rounded-xl border shadow-2xs focus:ring-2 focus:ring-indigo-500 focus:outline-none transition ${getGradeSelectStyle(currentGrade)}">
+                <option value="">등급 선택 (미부여)</option>
+                <option value="S" ${currentGrade === 'S' ? 'selected' : ''}>S · 286~300점</option>
+                <option value="A+" ${currentGrade === 'A+' ? 'selected' : ''}>A · 270~285점</option>
+                <option value="A-" ${currentGrade === 'A-' ? 'selected' : ''}>B · 250~269점</option>
+                <option value="B" ${currentGrade === 'B' ? 'selected' : ''}>C · 230~249점</option>
+                <option value="C" ${currentGrade === 'C' ? 'selected' : ''}>D · 210~229점</option>
+                <option value="D" ${currentGrade === 'D' ? 'selected' : ''}>E · 210점 미만</option>
+              </select>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function getGradeSelectStyle(g) {
+      if (g === 'S' || g === 'A+') return 'bg-amber-100 text-amber-950 border-amber-300';
+      if (g === 'A-') return 'bg-blue-100 text-blue-950 border-blue-300';
+      if (g === 'B') return 'bg-slate-100 text-slate-900 border-slate-300';
+      if (g === 'C') return 'bg-orange-50 text-orange-950 border-orange-300';
+      if (g === 'D') return 'bg-rose-50 text-rose-950 border-rose-300';
+      return 'bg-white text-slate-500 border-slate-300';
+    }
+
+    /* =========================================================================
+       5. 등급 초과 입력 검증 및 안내 팝업 모달
+       ========================================================================= */
+    function onGradeSelect(empNo, newGrade, prevGrade) {
+      if (newGrade === prevGrade) return;
+
+      const groupDef = GROUP_DEFINITIONS.find(g => g.id === activeGroupId);
+      const targets = RAW_ROSTER.filter(r => r.groups.includes(groupDef.id) && r.isTarget === "대상");
+      const totalCount = targets.length || groupDef.targetCount;
+      const quota = calculateQuota(totalCount);
+      const saveKey = `${groupDef.id}_${empNo}`;
+
+      // 빈 값 선택(해제)은 즉시 허용
+      if (!newGrade) {
+        delete simulationGrades[saveKey];
+        renderSimulationBoard();
+        return;
+      }
+
+      // 현재 변경 대상자를 제외한 배정치 계산
+      let currentSA = 0;
+      let currentAMinus = 0;
+
+      targets.forEach(t => {
+        if (t.no === empNo) return;
+        const key = `${groupDef.id}_${t.no}`;
+        const g = simulationGrades[key];
+        if (g === 'S' || g === 'A+') currentSA++;
+        if (g === 'A-') currentAMinus++;
+      });
+
+      // 1) S / A+ 통합 상한 검증
+      if (newGrade === 'S' || newGrade === 'A+') {
+        if (currentSA + 1 > quota.saMax) {
+          const detailMsg = quota.isMinAdjusted
+            ? `현재 평가 그룹(총 ${totalCount}명)은 15% 계산 시 1명 미달이나, 단서 규정에 따라 <strong>최대 ${quota.saMax}명</strong>까지만 부여할 수 있습니다.`
+            : `현재 평가 그룹(총 ${totalCount}명)의 15% 버림(↓) 상한 원칙에 따라 S 및 A 통합 T.O는 <strong>최대 ${quota.saMax}명</strong>까지만 배정 가능합니다.`;
+
+          showQuotaModal(
+            'S / A 통합 기준 인원(T.O) 초과 안내',
+            `${detailMsg}<br><br><span class="text-rose-600 font-bold">이미 ${currentSA}명이 S/A 등급으로 지정되어 초과 입력할 수 없습니다.</span><br>기존 배정된 인원의 등급을 먼저 변경하신 후 다시 지정해 주세요.`
+          );
+          renderSimulationBoard();
+          return;
+        }
+      }
+
+      // 2) A- 등급 정원 한도 검증
+      if (newGrade === 'A-') {
+        if (currentAMinus + 1 > quota.aMinus) {
+          showQuotaModal(
+            'B 등급 배정 정원 초과 안내',
+            `B 등급의 배정 허용 정원은 <strong>최대 ${quota.aMinus}명</strong>입니다.<br><br>하위 등급(C, D)의 최소 인원을 준수하고 전체 정원의 균형을 맞추기 위해 B 등급을 초과 배정할 수 없습니다.`
+          );
+          renderSimulationBoard();
+          return;
+        }
+      }
+
+      // 검증 통과 -> 저장
+      simulationGrades[saveKey] = newGrade;
+      renderSimulationBoard();
+
+      // 전체 배정 완료 시 축하 효과
+      checkGroupCompletion(targets);
+    }
+
+    function checkGroupCompletion(targets) {
+      const allAssigned = targets.every(t => simulationGrades[`${activeGroupId}_${t.no}`]);
+      if (allAssigned && typeof confetti === 'function') {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    function resetCurrentGroupSimulation() {
+      const groupDef = GROUP_DEFINITIONS.find(g => g.id === activeGroupId);
+      const targets = RAW_ROSTER.filter(r => r.groups.includes(groupDef.id) && r.isTarget === "대상");
+      targets.forEach(t => {
+        delete simulationGrades[`${groupDef.id}_${t.no}`];
+      });
+      renderSimulationBoard();
+    }
+    function exportCurrentSimulationExcel() {
+      const groupDef = GROUP_DEFINITIONS.find(g => g.id === activeGroupId);
+      const targets = RAW_ROSTER.filter(r => r.groups.includes(groupDef.id) && r.isTarget === "대상");
+
+      const rows = targets.map((t, idx) => ({
+        "연번": idx + 1,
+        "근무": t.loc,
+        "부서": t.dept,
+        "직책": t.duty,
+        "직위": t.title,
+        "성명": t.name,
+        "평가자": groupDef.evaluator,
+        "부여등급": GRADE_LABEL[simulationGrades[`${groupDef.id}_${t.no}`]] || "미부여"
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(rows);
+      const wb = XLSX.utils.book_new();
+      const safeSheetName = `${groupDef.groupName}_${groupDef.evaluator}`.replace(/[/\\?*[\]]/g, '').slice(0, 30);
+      XLSX.utils.book_append_sheet(wb, ws, safeSheetName);
+      XLSX.writeFile(wb, `${groupDef.groupName}_${groupDef.evaluator}_시뮬레이션결과.xlsx`);
+    }
+
+    // [관리자 전용] 엑셀 업로드 처리 (평가자 열 기반 자동 배정 + 검증)
+
+/*
+       ========================================================================= */
+    const normKey = s => String(s ?? '').replace(/[\s.\u00a0]/g, '').toLowerCase();
+    const HEADER_ALIAS = {
+      no: ['no', '연번', '번호'], loc: ['근무', '근무지'], dept: ['부서', '소속'],
+      duty: ['직책'], title: ['직위', '직급'], name: ['성명', '이름'],
+      inDate: ['입사일', '입사일자'], isTarget: ['대상자여부', '대상여부'],
+      ev1: ['1차평가자', '1차평가'], ev2: ['2차평가자', '2차평가']
+    };
+    const REQUIRED_FIELDS = ['name', 'loc', 'dept', 'title', 'isTarget', 'ev1', 'ev2'];
+    const FIELD_LABEL = { name: '성명', loc: '근무', dept: '부서', title: '직위', isTarget: '대상자여부', ev1: '1차 평가자', ev2: '2차 평가자' };
+
+    function findHeaderKey(keys, field) {
+      const alias = HEADER_ALIAS[field].map(normKey);
+      return keys.find(k => alias.includes(normKey(k)));
+    }
+
+    function parseYmd(v) {
+      if (v instanceof Date && !isNaN(v)) {
+        return `${v.getFullYear()}-${String(v.getMonth() + 1).padStart(2, '0')}-${String(v.getDate()).padStart(2, '0')}`;
+      }
+      if (typeof v === 'number' && v > 20000 && v < 80000) {          // 엑셀 날짜 일련번호
+        return new Date(Date.UTC(1899, 11, 30) + Math.round(v) * 86400000).toISOString().slice(0, 10);
+      }
+      const m = String(v ?? '').trim().match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+      return m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : '';
+    }
+
+    function normTarget(v, title, inDate) {
+      const x = String(v ?? '').trim();
+      if (x === '대상') return '대상';
+      if (x === '비해당' || x === '제외' || x === '해당없음') return '비해당';
+      return (EXCLUDED_TITLES.includes(title) || (inDate && inDate >= LATE_HIRE_FROM)) ? '비해당' : '대상';
+    }
+
+    // 반환: { roster, report } — report: 검증 결과
+    function buildRosterFromRows(json) {
+      const report = { missingCols: [], emptyDate: 0, dupName: [], dupNo: [], unassigned: [], unknownEvaluators: [], groupDiff: [] };
+      const keys = Object.keys(json[0] || {});
+      const colOf = {};
+      Object.keys(HEADER_ALIAS).forEach(f => { colOf[f] = findHeaderKey(keys, f); });
+      report.missingCols = REQUIRED_FIELDS.filter(f => !colOf[f]).map(f => FIELD_LABEL[f]);
+      const get = (row, f) => colOf[f] !== undefined ? row[colOf[f]] : '';
+
+      const unknownSet = new Set();
+      const usedNo = new Set();
+      const roster = [];
+      json.forEach(row => {
+        const name = String(get(row, 'name')).trim();
+        if (!name) return;                                  // 빈 행 / 정의표만 있는 행 제외
+        const title = String(get(row, 'title')).trim();
+        const inDate = parseYmd(get(row, 'inDate'));
+        if (!inDate) report.emptyDate++;
+        let no = parseInt(get(row, 'no'), 10);
+        if (!no || usedNo.has(no)) { if (no) report.dupNo.push(no); no = Math.max(0, ...usedNo) + 1; }
+        usedNo.add(no);
+        const rec = {
+          no,
+          loc: String(get(row, 'loc')).trim(),
+          dept: String(get(row, 'dept')).trim(),
+          duty: String(get(row, 'duty')).trim(),
+          title, name, inDate,
+          isTarget: normTarget(get(row, 'isTarget'), title, inDate),
+          ev1: String(get(row, 'ev1')).trim(),
+          ev2: String(get(row, 'ev2')).trim()
+        };
+        rec.groups = assignGroups(rec, unknownSet);
+        if (rec.isTarget === '대상' && rec.groups.length === 0) report.unassigned.push(`${rec.name}(${rec.dept})`);
+        roster.push(rec);
+      });
+
+      const nameCnt = {};
+      roster.forEach(r => { nameCnt[r.name] = (nameCnt[r.name] || 0) + 1; });
+      report.dupName = Object.keys(nameCnt).filter(n => nameCnt[n] > 1);
+      report.unknownEvaluators = [...unknownSet];
+      GROUP_DEFINITIONS.forEach(g => {
+        const actual = roster.filter(r => r.isTarget === '대상' && r.groups.includes(g.id)).length;
+        if (actual !== g.targetCount) report.groupDiff.push(`${g.groupName}: 엑셀 ${actual}명 / 정의 ${g.targetCount}명`);
+      });
+      return { roster, report };
+    }
+
+    function renderValidationHtml(count, report, keptCnt, droppedCnt) {
+      const tg = RAW_ROSTER.filter(r => r.isTarget === '대상').length;
+      const li = (cls, txt) => `<li class="${cls}">${txt}</li>`;
+      const items = [];
+      items.push(li('text-slate-700', `총 <b>${count}명</b> 반영 (대상 ${tg}명 / 비해당 ${count - tg}명)`));
+      if (keptCnt + droppedCnt > 0) items.push(li('text-slate-700', `기존 등급 입력 ${keptCnt}건 유지${droppedCnt ? `, ${droppedCnt}건 제거(대상자/그룹 변경)` : ''}`));
+      if (report.missingCols.length) items.push(li('text-rose-700 font-bold', `필수 열 없음: ${report.missingCols.join(', ')}`));
+      if (report.unassigned.length) items.push(li('text-rose-700 font-bold', `그룹 미배정 대상자 ${report.unassigned.length}명: ${report.unassigned.slice(0, 8).join(', ')}${report.unassigned.length > 8 ? ' 외' : ''}`));
+      if (report.unknownEvaluators.length) items.push(li('text-rose-700 font-bold', `평가그룹 정의에 없는 평가자: ${report.unknownEvaluators.join(', ')}`));
+      if (report.groupDiff.length) items.push(li('text-amber-700', `그룹 인원 불일치<br><span class="text-[11px]">${report.groupDiff.join('<br>')}</span>`));
+      if (report.dupName.length) items.push(li('text-amber-700', `동명이인(확인 필요): ${report.dupName.join(', ')}`));
+      if (report.dupNo.length) items.push(li('text-amber-700', `연번 중복 ${report.dupNo.length}건 (자동 재부여)`));
+      if (report.emptyDate) items.push(li('text-amber-700', `입사일 해석 불가 ${report.emptyDate}건`));
+      const ok = !report.missingCols.length && !report.unassigned.length && !report.unknownEvaluators.length && !report.groupDiff.length;
+      if (ok) items.push(li('text-emerald-700 font-bold', '✔ 13개 그룹 인원이 평가그룹 정의와 모두 일치합니다.'));
+      return `<ul class="text-left text-sm space-y-1.5 list-disc pl-5">${items.join('')}</ul>`;
+    }
+
+RAW_ROSTER.forEach(r => { r.groups = assignGroups(r); });
+RAW_ROSTER.forEach(r=>DEFAULT_ROSTER.push(JSON.parse(JSON.stringify(r))));
+function initApp(){renderPage1Stats();runMiniCalculator(14);renderQuotaTables();renderGroupSummaryTable();populateGroupFilter();filterRosterTable();renderGroupTabs();renderSimulationBoard();}
+    // 1페이지 상단 통계
+    function renderPage1Stats() {
+      const total = RAW_ROSTER.length;
+      const target = RAW_ROSTER.filter(r => r.isTarget === "대상").length;
+      const exclude = RAW_ROSTER.filter(r => r.isTarget === "비해당").length;
+
+      document.getElementById("statTotalEmployees").innerText = total;
+      document.getElementById("statEvalTargetCount").innerText = target;
+      document.getElementById("statEvalExcludeCount").innerText = exclude;
+
+      // 제외 대상 내역 (명부에서 직접 계산: 직급 → 하반기 입사 → 기타 순으로 분류)
+      const ex = RAW_ROSTER.filter(r => r.isTarget === "비해당");
+      const senior = ex.filter(r => EXCLUDED_TITLES.includes(r.title));
+      const late = ex.filter(r => !EXCLUDED_TITLES.includes(r.title) && r.inDate >= LATE_HIRE_FROM);
+      const other = ex.filter(r => !EXCLUDED_TITLES.includes(r.title) && r.inDate < LATE_HIRE_FROM);
+      document.getElementById("excTotal").innerText = ex.length;
+      document.getElementById("excSenior").innerText = senior.length;
+      document.getElementById("excLate").innerText = late.length;
+      document.getElementById("excOther").innerText = other.length;
+      document.getElementById("excOtherRow").classList.toggle("hidden", other.length === 0);
+      document.getElementById("excOtherNames").innerText = other.map(r => `${r.name}(${r.dept} ${r.title})`).join(", ");
+    }
+
+    // 13개 평가그룹 정의 테이블
+    function renderGroupSummaryTable() {
+      const tbody = document.getElementById("groupSummaryTbody");
+      tbody.innerHTML = GROUP_DEFINITIONS.map(g => {
+        // 실제 매핑된 대상자 수 확인
+        const actualCount = RAW_ROSTER.filter(r => r.groups.includes(g.id) && r.isTarget === "대상").length;
+        const displayCount = RAW_ROSTER.length === 0 ? "-" : (actualCount > 0 ? actualCount : g.targetCount);
+        return `
+          <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+            <td class="py-3.5 px-4 text-center font-black text-indigo-700 bg-indigo-50/30">${g.groupName}</td>
+            <td class="py-3.5 px-4 font-black text-slate-900">${g.evaluator}</td>
+            <td class="py-3.5 px-6 text-slate-600 text-xs sm:text-sm font-semibold">${g.targetRange}</td>
+            <td class="py-3.5 px-4 text-center font-extrabold text-blue-700 text-sm">${displayCount}명</td>
+            
+          </tr>
+        `;
+      }).join('');
+    }
+    // 명부 필터 옵션 채우기
+    function populateGroupFilter() {
+      const select = document.getElementById("groupFilterSelect");
+      select.innerHTML = `<option value="">전체 평가그룹 보기</option>` +
+        GROUP_DEFINITIONS.map(g => `<option value="${g.id}">${g.groupName} (${g.evaluator})</option>`).join('') +
+        `<option value="제외">평가제외자 그룹</option>`;
+    }
+
+    // 1페이지 169명 명부 테이블 필터링 & 렌더링
+    function filterRosterTable() {
+      const search = (document.getElementById("searchInput").value || "").trim().toLowerCase();
+      const groupFilter = document.getElementById("groupFilterSelect").value;
+      const targetFilter = document.getElementById("targetFilterSelect").value;
+
+      const filtered = RAW_ROSTER.filter(item => {
+        const matchSearch = !search || 
+          item.name.toLowerCase().includes(search) ||
+          item.dept.toLowerCase().includes(search) ||
+          item.loc.toLowerCase().includes(search) ||
+          item.title.toLowerCase().includes(search) ||
+          item.duty.toLowerCase().includes(search);
+
+        let matchGroup = true;
+        if (groupFilter === "제외") {
+          matchGroup = item.groups.some(g => g.startsWith("제외"));
+        } else if (groupFilter) {
+          matchGroup = item.groups.includes(groupFilter);
+        }
+
+        const matchTarget = !targetFilter || item.isTarget === targetFilter;
+
+        return matchSearch && matchGroup && matchTarget;
+      });
+
+      document.getElementById("filteredBadge").innerText = `${filtered.length}명`;
+
+      const tbody = document.getElementById("rosterTableBody");
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="11" class="py-8 text-center text-slate-400">${RAW_ROSTER.length === 0 ? "등록된 명부가 없습니다." : "검색 조건과 일치하는 임직원이 없습니다."}</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => {
+        const isExcluded = r.isTarget === "비해당";
+        // 다중 그룹 명칭 변환 (예: G6, G5 -> 그룹 6, 그룹 5)
+        const groupLabels = r.groups.map(gid => {
+          const gDef = GROUP_DEFINITIONS.find(g => g.id === gid);
+          return gDef ? gDef.groupName : gid;
+        }).join(', ') || '미배정';
+
+        return `
+          <tr class="hover:bg-slate-50 transition ${isExcluded ? 'bg-slate-50/50 text-slate-400' : ''}">
+            <td class="py-2 px-3 text-center font-mono">${r.no}</td>
+            <td class="py-2 px-3 font-medium">${r.loc}</td>
+            <td class="py-2 px-3 font-medium">${r.dept}</td>
+            <td class="py-2 px-3">${r.duty}</td>
+            <td class="py-2 px-3 font-semibold text-slate-700">${r.title}</td>
+            <td class="py-2 px-3 font-black text-slate-900">${r.name}</td>
+            <td class="py-2 px-3 text-slate-600 font-mono text-[11px]">${r.inDate}</td>
+            <td class="py-2 px-3 text-center">
+              ${isExcluded 
+                ? `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">제외</span>` 
+                : `<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full">대상</span>`
+              }
+            </td>
+            <td class="py-2 px-3 text-[11px]">${r.ev1 || '-'}</td>
+<td class="py-2 px-3 text-[11px]">${r.ev2 || '-'}</td>
+<td class="py-2 px-3 text-xs font-bold ${isExcluded ? 'text-slate-400' : 'text-indigo-900 bg-indigo-50/30'}">
+              ${groupLabels}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+    function showQuotaModal(title, bodyHtml) {
+      document.getElementById("quotaModalTitle").innerText = title;
+      document.getElementById("quotaModalBody").innerHTML = bodyHtml;
+      document.getElementById("quotaModal").classList.remove("hidden");
+    }
+
+    function closeQuotaModal() {
+      document.getElementById("quotaModal").classList.add("hidden");
+    }
+        function handleExcelUpload(event) {
+      if (!isAdminActive) {
+        showQuotaModal("권한 제한", "엑셀 업로드는 관리자 모드에서만 가능합니다.");
+        return;
+      }
+
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+
+          // '성명' 헤더가 있는 시트를 자동 탐색 (첫 시트에 의존하지 않음)
+          let json = null;
+          for (const sn of workbook.SheetNames) {
+            const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sn], { defval: '' });
+            if (rows.length && findHeaderKey(Object.keys(rows[0]), 'name')) { json = rows; break; }
+          }
+          if (!json) {
+            showQuotaModal("엑셀 오류", "'성명' 열이 있는 시트를 찾지 못했습니다. 1행에 헤더(근무, 부서, 직책, 직위, 성명 등)가 있는지 확인해주세요.");
+            return;
+          }
+
+          const { roster, report } = buildRosterFromRows(json);
+          if (roster.length === 0) {
+            showQuotaModal("엑셀 오류", "업로드한 엑셀에 유효한 임직원 행이 없습니다.");
+            return;
+          }
+
+          RAW_ROSTER.length = 0;
+          roster.forEach(p => RAW_ROSTER.push(p));
+          setRosterSource(file.name);
+          saveRoster(file.name);
+
+          initApp();
+          showQuotaModal("업로드 완료", renderValidationHtml(roster.length, report, 0, 0));
+        } catch (err) {
+          console.error(err);
+          showQuotaModal("해석 실패", "엑셀 형식을 확인해주세요. (근무, 부서, 직책, 직위, 성명, 대상자여부, 1차/2차 평가자 열)");
+        } finally {
+          event.target.value = '';
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+    function toggleAdminModal() {
+      if (isAdminActive) {
+        exitAdminMode();
+      } else {
+        document.getElementById("adminPwInput").value = '';
+        document.getElementById("adminPwError").classList.add("hidden");
+        document.getElementById("adminModal").classList.remove("hidden");
+        setTimeout(() => document.getElementById("adminPwInput").focus(), 100);
+      }
+    }
+
+    function closeAdminModal() {
+      document.getElementById("adminModal").classList.add("hidden");
+    }
+
+    async function verifyAdminPw() {
+      const pw = document.getElementById("adminPwInput").value;
+      let ok = false;
+      try {
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("hr26:" + pw));
+        const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        ok = hex === "fc6df6a9448c4c052d3cc92cb4af1cf52e2b580313ce90f677b87c2099ca6e6f";
+      } catch (e) {}
+      if (ok) {
+        isAdminActive = true;
+        closeAdminModal();
+        applyAdminUIState();
+        showQuotaModal("인증 성공", "관리자 모드가 활성화되었습니다.<br>엑셀 업로드 권한이 부여되었습니다.");
+      } else {
+        document.getElementById("adminPwError").classList.remove("hidden");
+      }
+    }
+
+    function applyAdminUIState() {
+      const banner = document.getElementById("adminModeBanner");
+      const btn = document.getElementById("adminModeBtn");
+      const btnLabel = document.getElementById("adminBtnLabel");
+      const uploadLabel = document.getElementById("adminUploadBtnLabel");
+      const uploadInput = document.getElementById("excelUploadInput");
+
+      if (isAdminActive) {
+        banner.classList.remove("hidden");
+        btn.classList.remove("bg-amber-500", "hover:bg-amber-400");
+        btn.classList.add("bg-rose-600", "hover:bg-rose-500", "text-white");
+        btnLabel.innerText = "관리자 종료";
+
+        uploadLabel.classList.remove("bg-slate-700", "text-slate-400", "cursor-not-allowed");
+        uploadLabel.classList.add("bg-indigo-600", "hover:bg-indigo-500", "text-white", "cursor-pointer");
+        uploadInput.removeAttribute("disabled");
+      } else {
+        banner.classList.add("hidden");
+        btn.classList.add("bg-amber-500", "hover:bg-amber-400");
+        btn.classList.remove("bg-rose-600", "hover:bg-rose-500", "text-white");
+        btnLabel.innerText = "관리자 모드";
+
+        uploadLabel.classList.add("bg-slate-700", "text-slate-400", "cursor-not-allowed");
+        uploadLabel.classList.remove("bg-indigo-600", "hover:bg-indigo-500", "text-white", "cursor-pointer");
+        uploadInput.setAttribute("disabled", "true");
+      }
+    }
+
+    function exitAdminMode() {
+      isAdminActive = false;
+      applyAdminUIState();
+    }
+let rosterDb = null;
+    function setRosterSource(name) {
+      const el = document.getElementById("rosterSource");
+      if (el) el.innerText = name ? `(${name} 기준)` : "(관리자 엑셀 업로드 기준)";
+    }
+    function applyRoster(rows, name) {
+      RAW_ROSTER.length = 0;
+      rows.forEach(r => { r.groups = assignGroups(r); RAW_ROSTER.push(r); });
+      setRosterSource(name);
+      initApp();
+    }
+    async function initDb() {
+      try {
+        const db = await claude.use("db");
+        if (!db) return;
+        rosterDb = db.doc("roster/current");
+        rosterDb.onSnapshot(s => {
+          if (s.exists) { const d = s.data(); if ((d.updatedAt || 0) > EMBEDDED.at) applyRoster(JSON.parse(d.json), d.fileName); }
+        }, () => {});
+      } catch (e) { console.error(e); }
+    }
+    function saveRoster(name) {
+      if (!rosterDb) { showQuotaModal("저장 안내", "이 화면에서는 명부가 임시로만 적용됩니다. 다른 사람에게 보이려면 게시자 계정으로 열어 업로드해주세요."); return; }
+      rosterDb.set({ json: JSON.stringify(RAW_ROSTER.map(({ groups, ...r }) => r)), fileName: name, updatedAt: Date.now() })
+        .catch(() => showQuotaModal("저장 실패", "명부를 서버에 저장하지 못했습니다. 편집 권한이 있는 계정인지 확인해주세요."));
+    }
+    function resetAllData() {
+      simulationGrades = {};
+      if (EMBEDDED.rows.length) applyRoster(EMBEDDED.rows, EMBEDDED.name); else { RAW_ROSTER.length = 0; initApp(); }
+      showQuotaModal("초기화 완료", "시뮬레이션 등급 배정이 모두 초기화되었습니다.");
+    }
+window.addEventListener('DOMContentLoaded',()=>{if(EMBEDDED.rows.length)applyRoster(EMBEDDED.rows,EMBEDDED.name);else initApp();});
+    /* =========================================================================
+       3. 상대평가 등급 배정 T.O 공식 연산 (특례 완벽 탑재)
+       ========================================================================= */
+    // 등급 체계: S / A+ (통합 15%, 버림) · A- (남는 인원) · B (30%, 올림) · C (15%) · D (선택, C에서 차감)
+    // C: 20명 이하 그룹은 반올림(사사오입), C_CEIL_FROM명 이상 그룹은 올림
+    const C_CEIL_FROM = 21;
+const GRADE_LABEL = { 'S': 'S', 'A+': 'A', 'A-': 'B', 'B': 'C', 'C': 'D', 'D': 'E' };
+    function calculateQuota(totalCount) {
+      if (!totalCount || totalCount <= 0) {
+        return { total: 0, saMax: 0, aMinus: 0, b: 0, c: 0, isMinAdjusted: false };
+      }
+      const ceilDiv = (a, b) => Math.floor((a + b - 1) / b);   // 정수 연산으로 부동소수점 오차 방지
+
+      // S / A+ 통합 (15% 버림)
+      let saMax = Math.floor(totalCount * 15 / 100);
+      let isMinAdjusted = false;
+      // 단서 규정: 계산상 0명이어도 최대 1명 가능, A-에서 차감
+      if (saMax < 1) { saMax = 1; isMinAdjusted = true; }
+
+      // B (30% 올림, 최소 인원)
+      const b = ceilDiv(totalCount * 30, 100);
+
+      // C (15% 최소 인원): 20명 이하 반올림(사사오입) / 21명 이상 올림
+      const c = totalCount >= C_CEIL_FROM
+        ? ceilDiv(totalCount * 15, 100)
+        : Math.floor((totalCount * 30 + 100) / 200);
+
+      // A- (남는 인원) = 총원 - (S/A+ + B + C)
+      const aMinus = Math.max(0, totalCount - (saMax + b + c));
+
+      return { total: totalCount, saMax, aMinus, b, c, isMinAdjusted };
+    }
+
+    // 2페이지: 인원별 등급 인원표 (5~20명 / 21~36명) — 위 공식으로 자동 생성
+    function renderQuotaTables() {
+      const build = (from, to) => {
+        const ns = []; for (let n = from; n <= to; n++) ns.push(n);
+        const qs = ns.map(calculateQuota);
+        const th = ns.map(n => `<th class="py-2 px-2.5 bg-blue-900 text-white font-bold whitespace-nowrap">${n}명</th>`).join('');
+        const row = (label, sub, cls, vals) => `<tr class="border-b border-slate-200">
+          <td class="py-2 px-3 text-left font-bold ${cls} sticky left-0 whitespace-nowrap">${label}<div class="text-[10px] font-medium opacity-70">${sub}</div></td>
+          ${vals.map(v => `<td class="py-2 px-2.5 font-black text-slate-900">${v}</td>`).join('')}</tr>`;
+        return `<table class="w-full text-center border-collapse text-xs">
+          <thead><tr><th class="py-2 px-3 bg-blue-950 text-white text-left sticky left-0">등급</th>${th}</tr></thead>
+          <tbody>
+            ${row('S / A', '15% · 최대', 'bg-amber-100 text-amber-950', qs.map(q => q.saMax))}
+            ${row('B', '남는 인원(흡수)', 'bg-blue-100 text-blue-950', qs.map(q => q.aMinus))}
+            ${row('C', '30% · 최소', 'bg-slate-100 text-slate-900', qs.map(q => q.b))}
+            ${row('D', '15% · 최소', 'bg-orange-50 text-orange-950', qs.map(q => q.c))}
+          </tbody></table>`;
+      };
+      const a = document.getElementById('quotaTableSmall'), b = document.getElementById('quotaTableLarge');
+      if (a) a.innerHTML = build(5, 20);
+      if (b) b.innerHTML = build(21, 36);
+    }
+
+    /* =========================================================================
+       4. 초기화 및 화면 렌더링
+       ========================================================================= */
+    // 2페이지 미니 계산기
+    function runMiniCalculator(val) {
+      const num = parseInt(val, 10) || 0;
+      const q = calculateQuota(num);
+      const container = document.getElementById("calcResultContainer");
+
+      container.innerHTML = `
+        <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-center">
+          <span class="text-[11px] font-bold text-amber-800">S / A 통합 (15%)</span>
+          <div class="text-xl font-black text-amber-950 mt-1">${q.saMax}명</div>
+          <span class="text-[10px] text-amber-700 font-medium">${q.isMinAdjusted ? '0명 → 1명 단서 적용' : '버림 · 최대'}</span>
+        </div>
+        <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-center">
+          <span class="text-[11px] font-bold text-blue-800">B (40%)</span>
+          <div class="text-xl font-black text-blue-950 mt-1">${q.aMinus}명</div>
+          <span class="text-[10px] text-blue-600 font-medium">남는 인원</span>
+        </div>
+        <div class="bg-slate-100 p-3 rounded-xl border border-slate-200 text-center">
+          <span class="text-[11px] font-bold text-slate-700">C 등급 (30%)</span>
+          <div class="text-xl font-black text-slate-900 mt-1">${q.b}명</div>
+          <span class="text-[10px] text-slate-500 font-medium">올림 · 최소 인원</span>
+        </div>
+        <div class="bg-orange-50 p-3 rounded-xl border border-orange-200 text-center">
+          <span class="text-[11px] font-bold text-orange-800">D 등급 (15%)</span>
+          <div class="text-xl font-black text-orange-950 mt-1">${q.c}명</div>
+          <span class="text-[10px] text-orange-700 font-medium">${num >= C_CEIL_FROM ? '올림 · 최소 인원' : '반올림 · 최소 인원'}</span>
+        </div>
+      `;
+    }
+
+    // 3페이지 그룹 선택 탭 렌더링
+</script>
+</body>
+</html>
